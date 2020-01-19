@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>{{ page_title }}</h2>
+    
+    {% for recipe in recipes %}
+    
+    
+    
+    <div class="row featurette">
+        
+        <h3 class="col-md-12"><a href="/recipes/{{ recipe.url }}">{{ recipe.name }}</a></h3>
+        
+        {% if loop.index % 2 != 0 %}
+        <div class="col-md-7">
+            <p>
+                {{ recipe.ingredients }}
+            </p>
+            <p>
+                {{ recipe.method }}
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid" src="{{ recipe.image }}">
+        </div>
+        {% else %}
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid" src="{{ recipe.image }}">
+        </div>
+        <div class="col-md-7">
+            <p>
+                {{ recipe.ingredients }}
+            </p>
+            <p>
+                {{ recipe.method }}
+            </p>
+        </div>
+        
+        {% endif %}
+    </div>
+    {% if loop.index != 3 %}
+    <hr class="featurette-divider">
+    {% endif %}
+    {% endfor %}
+{% endblock %}

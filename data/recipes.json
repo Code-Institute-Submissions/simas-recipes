@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Chicken Korma",
+        "ingredients": "1 onion (chopped), 2 garlic cloves, roughly chopped thumb-sized piece ginger (roughly chopped), 4 tbsp korma paste, 4 skinless, boneless chicken breasts, cut into bite-sized pieces, 50g ground almonds, plus extra to serve (optional), 4 tbsp sultanas, 400ml chicken stock, ¼ tsp golden caster sugar, 150g pot 0% fat Greek yogurt, small bunch coriander, chopped",
+        "method": "Put 1 chopped onion, 2 roughly chopped garlic cloves and a roughly chopped thumb-sized piece of ginger in a food processor and whizz to a paste, Tip the paste into a large high-sided frying pan with 3 tbsp water and cook for 5 mins. Add 4 tbsp korma paste and cook for a further 2 mins until aromatic, Stir 4 skinless, boneless chicken breasts, cut into bite-sized pieces, into the sauce. Add 50g ground almonds, 4 tbsp sultanas, 400ml chicken stock and ¼ tsp golden caster sugar, Give everything a good mix, then cover and simmer for 10 mins or until the chicken is cooked through, Remove the pan from the heat, stir in a 150g pot Greek yogurt and some seasoning, then scatter over a small bunch of chopped coriander and more ground almonds, if using. Serve with brown or white basmati rice.", 
+        "image": "static/img/chicken_korma.jpg",
+        "url": "chickem-korma"
+    },
+    {
+        "name": "Moroccan Lamb",
+        "ingredients": "500g lamb, neck fillets, cut into bite-size pieces, 2 tsp paprika, 3 tsp ground cinnamon, 2 x 400g/14oz cans chopped tomato with olive oil and garlic, 1 tbsp finely chopped parsley, plus extra to serve",
+        "method": "Heat a large, non-stick frying pan. Cook the lamb well on all sides without adding extra oil. Tip in the spices, then fry for 1 min more until aromatic, Pour in the chopped tomatoes and parsley, bring to the boil, then simmer gently, with a lid on, for 30 mins or until the lamb is tender. Serve sprinkled with more parsley.",
+        "image": "static/img/moroccan_lamb.jpg",
+        "url": "moroccan-lamb"
+    },
+    {
+        "name": "Spicy Vegetable & Quinoa One-pot",
+        "ingredients": "1 onion, sliced, 4 tbsp vegetarian korma or Madras curry paste, 1l milk, 750g frozen mixed vegetable, 175g quinoa, rinsed",
+        "method": "Simmer the onion and the curry paste with a splash of water for 5 mins in a large saucepan, stirring from time to time. Heat the milk in a jug in the microwave, Add the vegetables and quinoa, then stir in the milk. Bring to the boil, simmer gently for 10 mins until the quinoa is cooked. Check seasoning. Serve with warm naan bread.", 
+        "image": "static/img/Spicy_vegetable.jpg",
+        "url": "spicy-veg"
+    }
+
+]
