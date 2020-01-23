@@ -1,10 +1,22 @@
 import os
 import json
-from flask import Flask, render_template, request, flash
+from datetime import datetime
+from flask import Flask, render_template, request, flash, redirect, request, session, url_for
 
 app = Flask(__name__)
-app.secret_key = 'secret'
+app.secret_key = 'recipechat'
 
+messages = []
+
+def add_messages(username, message):
+    """Add messages to the messages list"""
+    now = datetime.now().strftime("%H:%M:%S")
+    #messages_dict = {"timestamp": now, "from": username, "message": message}
+    messages.append({"timestamp": now, "from": username, "message": message})
+
+#def get_all_messages():
+#    """Get all the messages and separate them with 'br'"""
+#    return "<br>".join(messages)
 
 @app.route("/")
 def index():
@@ -22,7 +34,37 @@ def contact():
         ))
         #print(request.form["name"])
     return render_template("contact.html", page_title="Contact")
+
+@app.route("/chat", methods = ["GET", "POST"])
+def chat():
+    if request.method == "POST":
+        session["username"] = request.form["chatname"]
+        
+    if "username" in session:
+        #return redirect (session["username"])
+        return redirect (url_for("user", username = session["username"]))
+        
+    return render_template("chat.html")
     
+@app.route("/chat/<username>", methods=["GET", "POST"])
+def user(username):
+    """Display chat Messages"""
+    
+    if request.method == "POST":
+        username = session["username"]
+        message = request.form["chatmessage"]
+        add_messages(username, message)
+        #return redirect(session["username"])
+        return redirect (url_for("user", username = session["username"]))
+        
+    return render_template("chat.html", username = username, chat_messages = messages)
+
+"""@app.route("/<username>/<message>")
+def send_message(username, message):
+    add_messages(username, message)
+    return redirect("/" + username)
+"""
+
 @app.route("/recipes")
 def recipes():
     data=[]
