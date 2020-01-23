@@ -4,7 +4,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, flash, redirect, request, session, url_for
 
 app = Flask(__name__)
-app.secret_key = 'recipechat'
+app.secret_key = os.getenv("SECRET", "recipechat")
 
 messages = []
 
@@ -84,6 +84,6 @@ def about_recipe(recipe_name):
     
     
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+    app.run(host=os.environ.get("IP", "0.0.0.0"),
+            port=int(os.environ.get("PORT", "5000")),
+            debug=False)
