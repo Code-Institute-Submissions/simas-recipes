@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>{{ page_title }}</h2>
+    
+    <div class="row">
+        <form action="{{ url_for('update_recipe', task_id = recipe._id) }}" method="POST" class="col s12">
+            <h5>Recipe Name:</h5>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">outdoor_grill</i>
+                <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
+                <label for="icon_prefix">Recipe Name</label>
+            </div>
+            <h5>Choose a Category:</h5>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">photo_filter</i>
+                <select id="recipe_type" name="recipe_type">
+                    <option value="" disabled selected>Recipe Type</option>
+                                                
+                        {% for cat in categories %}
+                        
+                            {% if cat.category_name == recipe.recipe_type %}
+                                <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+                            {% else %}
+                                <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                                                            
+                </select>
+            </div>
+            <h5>Upload a Image:</h5>
+            <div class="file-field input-field col s12">
+                <span class="btn col s3"><i class="material-icons">image</i>
+                    <input type="file" value="{{ recipe.recipe_image }}">
+                </span>
+                <input class="file-path validate file-path-wrapper col s9" type="text" value="{{ recipe.recipe_image }}">
+            </div>
+            <h5>Add Ingredient(s):</h5>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_1" name="ingredient_1" type="text" class="validate" value="{{ recipe.ingredient_1 }}">
+                <label for="icon_prefix">Ingredient(1)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_2" name="ingredient_2" type="text" class="validate" value="{{ recipe.ingredient_2 }}">
+                <label for="icon_prefix">Ingredient(2)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_3" name="ingredient_3" type="text" class="validate" value="{{ recipe.ingredient_3 }}">
+                <label for="icon_prefix">Ingredient(3)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_4" name="ingredient_4" type="text" class="validate" value="{{ recipe.ingredient_4 }}">
+                <label for="icon_prefix">Ingredient(4)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_5" name="ingredient_5" type="text" class="validate" value="{{ recipe.ingredient_5 }}">
+                <label for="icon_prefix">Ingredient(5)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_6" name="ingredient_6" type="text" class="validate" value="{{ recipe.ingredient_6 }}">
+                <label for="icon_prefix">Ingredient(6)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_7" name="ingredient_7" type="text" class="validate" value="{{ recipe.ingredient_7 }}">
+                <label for="icon_prefix">Ingredient(7)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_8" name="ingredient_8" type="text" class="validate" value="{{ recipe.ingredient_8 }}">
+                <label for="icon_prefix">Ingredient(8)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">ballot</i>
+                <input id="ingredient_9" name="ingredient_9" type="text" class="validate" value="{{ recipe.ingredient_9 }}">
+                <label for="icon_prefix">Ingredient(9)</label>
+            </div>
+            <h5>Add Method(s):</h5>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_1" name="method_1" type="text" class="validate" value="{{ recipe.method_1 }}">
+                <label for="icon_prefix">method(1)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_2" name="method_2" type="text" class="validate" value="{{ recipe.method_2 }}">
+                <label for="icon_prefix">method(2)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_3" name="method_3" type="text" class="validate" value="{{ recipe.method_3 }}">
+                <label for="icon_prefix">method(3)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_4" name="method_4" type="text" class="validate" value="{{ recipe.method_4 }}">
+                <label for="icon_prefix">method(4)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_5" name="method_5" type="text" class="validate" value="{{ recipe.method_5 }}">
+                <label for="icon_prefix">method(5)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_6" name="method_6" type="text" class="validate" value="{{ recipe.method_6 }}">
+                <label for="icon_prefix">method(6)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_7" name="method_7" type="text" class="validate" value="{{ recipe.method_7 }}">
+                <label for="icon_prefix">method(7)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_8" name="method_8" type="text" class="validate" value="{{ recipe.method_8 }}">
+                <label for="icon_prefix">method(8)</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input id="method_9" name="method_9" type="text" class="validate" value="{{ recipe.method_9 }}">
+                <label for="icon_prefix">method(9)</label>
+            </div>
+            <h5>Choose a Date:</h5>
+            <div id="matfix" class="input-field col s12">
+                <i class="material-icons prefix">date_range</i>
+                <input id="create_on" name="create_on" type="text" class="datepicker" value="{{ recipe.create_on }}">
+                <label for="icon_prefix">Date of Creation</label>
+            </div>
+            <h5>Provide time (mins):</h5>
+            <div id="matfix" class="input-field col s12">
+                <i class="material-icons prefix">access_time</i>
+                <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ recipe.prep_time }}">
+                <label for="icon_prefix">Preparation Time</label>
+            </div>
+            <div id="matfix" class="input-field col s12">
+                <i class="material-icons prefix">access_time</i>
+                <input id="cook_time" name="cook_time" type="text" class="validate" value="{{ recipe.cook_time }}">
+                <label for="icon_prefix">Cooking Time</label>
+            </div>
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Edit Recipe
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>  
+    
+{% endblock %}

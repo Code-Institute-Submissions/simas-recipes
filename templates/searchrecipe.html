@@ -2,9 +2,34 @@
 {% block content %}
 
     <h2>{{ page_title }}</h2><br>
+    <ul class="collapsible">
+        <li>
+            <span>
+                <div class="row">
+                    <form action="/find_recipe" method="POST" class="col s12">
+                        <h5>Search for Recipe(s):</h5>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">search</i>
+                            <input id="search_recipe" name="search_recipe" type="text" class="validate">
+                            <label for="icon_prefix">Recipe Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">
+                                Search
+                            </button>
+                            <button class="btn waves-effect waves-light" type="reset" value="reset "name="action">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>  
+            </span>
+        </li>
+    </ul>
 
     {% for recipe in recipes %}
-
+        
+        {% if recipe.recipe_name == recipe.recipe_name %}
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header">
@@ -93,103 +118,9 @@
                 </div>
             </li>
         </ul>
-        <!--{{recipe.recipe_name}}
-        {{recipe.ingredient_1}}
-        {{recipe.ingredient_2}}
-        {{recipe.ingredient_3}}
-        {{recipe.ingredient_4}}
-        {{recipe.ingredient_5}}
-        {{recipe.ingredient_6}}
-        {{recipe.ingredient_7}}
-        {{recipe.ingredient_8}}
-        {{recipe.ingredient_9}}
-        {{recipe.method_1}}
-        {{recipe.method_2}}
-        {{recipe.method_3}}
-        {{recipe.method_4}}
-        {{recipe.method_5}}
-        {{recipe.method_6}}
-        {{recipe.method_7}}
-        {{recipe.method_8}}
-        {{recipe.method_9}}
-        {{recipe.DOC}}
-        {{recipe.DOM}}-->
-    
-    
-    <!--<div class="row featurette">
-        
-        <h3 class="col-md-12 col-sm-12">{{recipe.recipe_name}}</h3><br>
-        
-        {% if loop.index % 2 != 0 %}
-        <div class="col-md-7">
-            <h5>Ingredient:</h5>
-            <p>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
-            </p><br>
-            <h5>Method:</h5>
-            <p>
-                <i class="fas fa-check"></i> {{recipe.method_1}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_2}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_3}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_4}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_5}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_6}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_7}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_8}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_9}}<br>
-            </p><br>
-            <p><h5>Date of Creation:</h5> {{ recipe.DOC }}</p><br>
-            <p><h5>Date of Modification:</h5> {{ recipe.DOM }}</p><br>
-        </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
-        </div><br>
         {% else %}
-        <div class="col-md-5">
-            <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
-        </div><br>
-        <div class="col-md-7">
-            <br><h5>Ingredient:</h5>
-            <p>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
-                <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
-            </p><br>
-            <h5>Method:</h5>
-            <p>
-                <i class="fas fa-check"></i> {{recipe.method_1}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_2}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_3}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_4}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_5}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_6}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_7}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_8}}<br>
-                <i class="fas fa-check"></i> {{recipe.method_9}}<br>
-            </p><br>
-            <p><h5>Date of Creation:</h5> {{ recipe.DOC }}</p><br>
-            <p><h5>Date of Modification:</h5> {{ recipe.DOM }}</p><br>
-        </div>
-        
+            <p>No Record found</p>
         {% endif %}
-    </div>
-    {% if loop.index != 3 %}
-    <hr class="featurette-divider">
-    {% endif %}-->
     {% endfor %}
     
 {% endblock %}

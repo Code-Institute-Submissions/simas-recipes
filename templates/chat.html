@@ -1,18 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <form method="POST">
-        <label for="chatname">Name:</label>
-        <input type="text" id="chatname" name="chatname">
-        <button>Chat to us</button>
-    </form>
     
+    <form method="POST">
+        <div class="form-group floating-label-form-group controls">
+            <label for="chatname">Username:</label>
+            <input type="text" class="form-control" placeholder="Username" id="chatname" name="chatname" required data-validation-required-message="Please enter your username.">
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="chatMessageButton">Chat to us</button>
+        </div>
+    </form>
+    <br>
     <h2> Welcome, {{ username }}</h2>
     
     <form method = "POST">
-        <textarea cols = "50" rows = "4" name = "chatmessage" id = "chatmessage"></textarea>
+        <div class="form-group floating-label-form-group controls">
+            <textarea cols = "50" rows = "2" name = "chatmessage" id = "chatmessage"></textarea>
+        </div>
         <br>
-        <button>SEND</button>
+        <div class="form-group">
+            <button class="btn btn-primary" id="chatMessageButton">SEND</button>
+        </div>
     </form>
     
     {% for message in chat_messages %}
@@ -20,12 +29,12 @@
     {% endfor %}
 
 
-    <script>
+    <!--<script>
         let textbox = document.getElementById("chatmessage")
         
         let timer = setTimeout(function(){
             location.reload();
-        }, 5000);
+        }, 10000);
         
         textbox.onkeydown = function(e) {
             
@@ -33,7 +42,7 @@
             
             timer = setTimeout(function(){
                 location.reload();
-            }, 5000);
+            }, 10000);
         };
-    </script>
+    </script>-->
 {% endblock %}

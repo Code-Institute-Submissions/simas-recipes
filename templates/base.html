@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Cuprum:400,400i,700,700i|Josefin+Sans:400,600,700|Laila|Libre+Baskerville:400,400i,700|Overlock+SC|Roboto:400,500i,700,700i,900,900i|Tangerine&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/clean-blog.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" />
     <title>Sima's Recipes</title>
 </head>
 <body>
@@ -34,7 +36,10 @@
                         <a class="nav-link" href="{{ url_for('chat') }}">Chat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                        <a class="nav-link" href="{{ url_for('admin') }}">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('search_recipe') }}">Search</a>
                     </li>
                 </ul>
             </div>
@@ -56,16 +61,15 @@
         </div>
     </header>
 
-  <!-- Main Content -->
-  <div class="container">
-      {% block content %}
-      {% endblock %}
-  </div>
-  
-  <hr>
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <hr>
 
-  <!-- Footer -->
-  <footer>
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
@@ -90,7 +94,7 @@
                             <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
@@ -100,11 +104,21 @@
         </div>
     </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
 
-  <!-- Custom scripts for this template -->
-  <script src="{{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+    <!-- Custom scripts for this template -->
+    <script src="{{ url_for('static', filename='js/clean-blog.js') }}"></script>
+    <script src="https://kit.fontawesome.com/011e87d520.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').formSelect();
+            $('.datepicker').datepicker();
+            $('.timepicker').timepicker();
+        });
+    </script>
 </body>
 </html>
