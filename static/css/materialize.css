@@ -5867,11 +5867,11 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .collapsible-header i {
-  width: 2rem;
+  /*width: 2rem;*/
   font-size: 1.6rem;
   display: inline-block;
   text-align: center;
-  margin-right: 1rem;
+  /*margin-right: 1rem;*/
 }
 
 .keyboard-focused .collapsible-header:focus {
