@@ -1,15 +1,20 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-    <h2>{{ page_title }}</h2>
-    <ul class="collapsible">
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons">note_add</i>
-                Add a new Recipe
-            </div>
-            <div class="collapsible-body">
-                <span>
+<button type="button" class="btn btn-danger">
+    <a href ="{{ url_for('logout') }}">
+        Log Out
+    </a>
+</button>
+
+<h2>{{ page_title }}</h2>
+
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">note_add</i> Add a new Recipe
+        </div>
+        <div class="collapsible-body">
+            <span>
                     <div class="row">
                         <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
                             <!--<div class="row">-->
@@ -36,149 +41,150 @@
                                 <span class="btn col s3"><i class="material-icons">image</i>
                                     <input type="file">
                                 </span>
-                                <input class="file-path validate file-path-wrapper col s9" type="text">
-                            </div>
-                            <h5>Add Ingredient(s):</h5>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_1" name="ingredient_1" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(1)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_2" name="ingredient_2" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(2)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_3" name="ingredient_3" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(3)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_4" name="ingredient_4" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(4)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_5" name="ingredient_5" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(5)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_6" name="ingredient_6" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(6)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_7" name="ingredient_7" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(7)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_8" name="ingredient_8" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(8)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">ballot</i>
-                                <input id="ingredient_9" name="ingredient_9" type="text" class="validate">
-                                <label for="icon_prefix">Ingredient(9)</label>
-                            </div>
-                            <h5>Add Method(s):</h5>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_1" name="method_1" type="text" class="validate">
-                                <label for="icon_prefix">method(1)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_2" name="method_2" type="text" class="validate">
-                                <label for="icon_prefix">method(2)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_3" name="method_3" type="text" class="validate">
-                                <label for="icon_prefix">method(3)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_4" name="method_4" type="text" class="validate">
-                                <label for="icon_prefix">method(4)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_5" name="method_5" type="text" class="validate">
-                                <label for="icon_prefix">method(5)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_6" name="method_6" type="text" class="validate">
-                                <label for="icon_prefix">method(6)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_7" name="method_7" type="text" class="validate">
-                                <label for="icon_prefix">method(7)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_8" name="method_8" type="text" class="validate">
-                                <label for="icon_prefix">method(8)</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">restaurant</i>
-                                <input id="method_9" name="method_9" type="text" class="validate">
-                                <label for="icon_prefix">method(9)</label>
-                            </div>
-                            <h5>Choose a Date:</h5>
-                            <div id="matfix" class="input-field col s12">
-                                <i class="material-icons prefix">date_range</i>
-                                <input id="create_on" name="create_on" type="text" class="datepicker">
-                                <label for="icon_prefix">Date of Creation</label>
-                            </div>
-                            <h5>Provide time (mins):</h5>
-                            <div id="matfix" class="input-field col s12">
-                                <i class="material-icons prefix">access_time</i>
-                                <input id="prep_time" name="prep_time" type="text" class="validate">
-                                <label for="icon_prefix">Preparation Time</label>
-                            </div>
-                            <div id="matfix" class="input-field col s12">
-                                <i class="material-icons prefix">access_time</i>
-                                <input id="cook_time" name="cook_time" type="text" class="validate">
-                                <label for="icon_prefix">Cooking Time</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+            <input class="file-path validate file-path-wrapper col s9" type="text">
+        </div>
+        <h5>Add Ingredient(s):</h5>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_1" name="ingredient_1" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(1)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_2" name="ingredient_2" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(2)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_3" name="ingredient_3" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(3)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_4" name="ingredient_4" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(4)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_5" name="ingredient_5" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(5)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_6" name="ingredient_6" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(6)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_7" name="ingredient_7" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(7)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_8" name="ingredient_8" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(8)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">ballot</i>
+            <input id="ingredient_9" name="ingredient_9" type="text" class="validate">
+            <label for="icon_prefix">Ingredient(9)</label>
+        </div>
+        <h5>Add Method(s):</h5>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_1" name="method_1" type="text" class="validate">
+            <label for="icon_prefix">method(1)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_2" name="method_2" type="text" class="validate">
+            <label for="icon_prefix">method(2)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_3" name="method_3" type="text" class="validate">
+            <label for="icon_prefix">method(3)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_4" name="method_4" type="text" class="validate">
+            <label for="icon_prefix">method(4)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_5" name="method_5" type="text" class="validate">
+            <label for="icon_prefix">method(5)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_6" name="method_6" type="text" class="validate">
+            <label for="icon_prefix">method(6)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_7" name="method_7" type="text" class="validate">
+            <label for="icon_prefix">method(7)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_8" name="method_8" type="text" class="validate">
+            <label for="icon_prefix">method(8)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">restaurant</i>
+            <input id="method_9" name="method_9" type="text" class="validate">
+            <label for="icon_prefix">method(9)</label>
+        </div>
+        <h5>Choose a Date:</h5>
+        <div id="matfix" class="input-field col s12">
+            <i class="material-icons prefix">date_range</i>
+            <input id="create_on" name="create_on" type="text" class="datepicker">
+            <label for="icon_prefix">Date of Creation</label>
+        </div>
+        <h5>Provide time (mins):</h5>
+        <div id="matfix" class="input-field col s12">
+            <i class="material-icons prefix">access_time</i>
+            <input id="prep_time" name="prep_time" type="text" class="validate">
+            <label for="icon_prefix">Preparation Time</label>
+        </div>
+        <div id="matfix" class="input-field col s12">
+            <i class="material-icons prefix">access_time</i>
+            <input id="cook_time" name="cook_time" type="text" class="validate">
+            <label for="icon_prefix">Cooking Time</label>
+        </div>
+        <div class="input-field col s12">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
                                         <i class="material-icons right">send</i>
                                 </button>
-                            </div>
-                        </form>
-                    </div>  
-                </span>
-            </div>
-        </li>
-    </ul>
-    
-    
-    <h4>List of Recipes<h6>(for Amendement click on RECIPE)</h6></h4> 
-    
-    {% for recipe in recipes %}
-    
-        <ul class="collapsible">
-            <li>
-                <div class="collapsible-header">
-                    
-                    <div class="col-md-12">
-                        <i class="material-icons">
+        </div>
+        </form>
+        </div>
+        </span>
+        </div>
+    </li>
+</ul>
+
+
+<h4>List of Recipes
+    <h6>(for Amendement click on RECIPE)</h6>
+</h4>
+
+{% for recipe in recipes %}
+
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header">
+
+            <div class="col-md-12">
+                <i class="material-icons">
                             outdoor_grill
-                        </i> 
-                        {{recipe.recipe_name}}
-                    </div>
-                    
-                </div>
-                
-                <div class="collapsible-body">
-                    <span>
+                        </i> {{recipe.recipe_name}}
+            </div>
+
+        </div>
+
+        <div class="collapsible-body">
+            <span>
                         <div class="col-md-12">
                             <button type="button" class="btn btn-success">
                                 <a href ="{{ url_for('edit_recipe', task_id=recipe._id) }}">Edit</a>
@@ -264,22 +270,21 @@
                             {% endif %}
                         </div>
                     </span>
-                </div>
-            </li>
-        </ul>
-    
-    {% endfor %}
-    
-    <br>
-    <!--<h4>Add new Category</h4> -->
-    
-    <ul class="collapsible">
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons">note_add</i>
-                Add a new Category
-            </div>
-            <span>
+        </div>
+    </li>
+</ul>
+
+{% endfor %}
+
+<br>
+<!--<h4>Add new Category</h4> -->
+
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">note_add</i> Add a new Category
+        </div>
+        <span>
                 <div class="row">
                     <form action="{{ url_for('insert_category') }}" method="POST" class="col s12">
                         <h5>Category Name:</h5>
@@ -296,35 +301,34 @@
                     </form>
                 </div>  
             </span>
-        </li>
-    </ul>
-    
-    <h4>List of Categories</h4> 
-    
-    {% for cate in category %}
-    
-        <ul class="collapsible col-12">
-            <li>
-                <div class="collapsible-header">
-                    <div>
-                        <button type="button" class="btn waves-effect waves-light">
-                            <a href ="{{ url_for('edit_category', cat_id=cate._id) }}">Edit</a>
-                        </button>
-                    
-                        <button type="button" class="btn btn-danger">
-                            <a href ="{{ url_for('delete_category', cat_id=cate._id) }}">Delete</a>
-                        </button>
-                    </div>
-                    <div>
-                        <i class="material-icons">
+    </li>
+</ul>
+
+<h4>List of Categories</h4>
+
+{% for cate in category %}
+
+<ul class="collapsible col-12">
+    <li>
+        <div class="collapsible-header">
+            <div>
+                <button type="button" class="btn waves-effect waves-light">
+                    <a href ="{{ url_for('edit_category', cat_id=cate._id) }}">Edit</a>
+                </button>
+
+                <button type="button" class="btn btn-danger">
+                    <a href ="{{ url_for('delete_category', cat_id=cate._id) }}">Delete</a>
+                </button>
+            </div>
+            <div>
+                <i class="material-icons">
                             photo_filter
-                        </i> 
-                        {{cate.category_name}}
-                    </div>
-                </div>
-            </li>
-        </ul>
-    
-    {% endfor %}
-    
+                        </i> {{cate.category_name}}
+            </div>
+        </div>
+    </li>
+</ul>
+
+{% endfor %} 
+
 {% endblock %}

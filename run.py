@@ -3,9 +3,13 @@ import json
 import pymysql
 import pymongo
 from datetime import datetime
-from flask import Flask, render_template, request, flash, redirect, request, session, url_for
+from flask import Flask, render_template, request, flash, redirect, request, session, url_for, abort
 from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from bson.objectid import ObjectId
+import json
+from bson import json_util
+from bson.json_util import dumps
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET", "recipechat")
@@ -13,10 +17,14 @@ app.secret_key = os.getenv("SECRET", "recipechat")
 app.config["MONGO_DBNAME"] = "SimaRecipes"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 
+
 #app.config["DBS_NAME"] = "SimaRecipes"
 #app.config["COLLECTION_NAME"] = "recipes"
 
 recipe = PyMongo(app)
+mongo = PyMongo(app)
+
+recipe.FIELDS = {'recipe_name': True, 'recipe_type': True, 'create_on': True}
 
 def mongo_connect(url):
     try:
@@ -36,7 +44,19 @@ def add_messages(username, message):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", recipes = recipe.db.recipes.find())
+
+@app.route("/SimaRecipes/recipes")
+def simasrecipe_project():
+    projects = recipe.find(projection = recipe.FIELDS)
+    json_projects = []
+    for project in projects:
+        json_projects.append(project)
+    json_projects = json.dumps(json_projects, default=json_util.default)
+    
+    return render_template("index.html", json_projects=json_projects)
+        
+
     
 @app.route("/recipes")
 def recipes():
@@ -48,16 +68,7 @@ def search_recipe():
 
 @app.route("/find_recipe", methods=["GET","POST"])
 def find_recipe():
-    if request.method == 'POST':
-        my_search = request.form['search_recipe']
-        searchrecipe=recipe.db.racipes.find()
-    '''searchrecipe.find({'recipe_name': search_recipe})'''
-    for recipes in searchrecipe:
-        if (recipes('recipe_name') == my_search):
-            return 'Recipe Found'
-        else:
-            return 'No match found'
-    return render_template("searchrecipe.html")
+    return render_template("searchrecipe.html", recipes = recipe.db.recipes.find())
 
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
@@ -91,6 +102,28 @@ def user(username):
         return redirect (url_for("user", username = session["username"]))
         
     return render_template("chat.html", username = username, chat_messages = messages)
+
+@app.route('/loginuser')
+def loginuser():
+    '''return render_template("login.html")'''
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return redirect(url_for('admin'))
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.form['password'] == 'password' and request.form['username'] == 'admin':
+        session['logged_in'] = True
+        return redirect(url_for('admin'))
+    else:
+        flash("Username or Password Mismatch!")
+        return redirect(url_for('loginuser'))
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return redirect(url_for('loginuser'))
 
 @app.route("/admin")
 def admin():
@@ -183,7 +216,31 @@ def about_recipe(recipe_name):
             if obj["url"] == recipe_name:
                 recipe = obj
     return render_template("description.html", recipe=recipe)
+
+
+@app.route('/description')
+def description():
+    return'''
+        <form method="POST" action = "/create" encrypt="multipart.form-data">
+            <input type="text" name = "username">
+            <input type="file" name="profile_image">
+            <input type="submit">
+        </form>
+    '''
     
+@app.route('/create', methods=['POST'])
+def create():
+    if 'recipe_image' in request.files:
+        recipe_image = request.files['recipe_image']
+        recipe.save_file(recipe_image.filename, recipe_image)
+        recipe.db.images.insert({'recipe_name' : request.form.get('recipe_name'), 'recipe_image_name' : recipe_image.filename})
+        
+    return 'Done'
+
+
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "0.0.0.0"),
             port=int(os.environ.get("PORT", "5000")),

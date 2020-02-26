@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dc.min.css') }}" type="text/css" />
+    
+    <!--Supporting JavaScript file for Charts-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/crossfilter.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dc.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/queue.min.js') }}"></script>
+    
     <title>Sima's Recipes</title>
 </head>
 <body>
@@ -32,14 +40,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="{{ url_for('chat') }}">Chat</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('admin') }}">Admin</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('search_recipe') }}">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('loginuser') }}">Login</a>
                     </li>
                 </ul>
             </div>
@@ -108,6 +116,8 @@
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/graphs.js') }}"></script>
+    
     <!-- Custom scripts for this template -->
     <script src="{{ url_for('static', filename='js/clean-blog.js') }}"></script>
     <script src="https://kit.fontawesome.com/011e87d520.js" crossorigin="anonymous"></script>

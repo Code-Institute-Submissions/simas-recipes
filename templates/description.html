@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
+
+    <form method="POST" action = "/create" encrypt="multipart.form-data">
+            <input type="text" name = "recipe_name">
+            <input type="file" name="recipe_image">
+            <input type="submit">
+        </form>
+
 <div class="row">
     <div class="col-md-5">
         <img src="{{ recipe.image }}" alt="{{ recipe.name }}"/>

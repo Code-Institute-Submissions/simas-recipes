@@ -13,4 +13,11 @@
     <p>
         All our recipes are tested thoroughly by us to make sure they’re suitable for your kitchen at home. We know many of you are concerned about healthy eating, so we send them to a qualified nutritionist for thorough analysis too.
     </p>
+    <div>
+    <form method="POST" action = "/create" encrypt="multipart.form-data">
+            <input type="text" name = "recipe_name">
+            <input type="file" name = "recipe_image">
+            <input type="submit">
+    </form>
+    </div>
 {% endblock %}
