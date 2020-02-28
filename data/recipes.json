@@ -1,24 +1,82 @@
 [
     {
-        "name": "Chicken Korma",
-        "ingredients": "1 onion (chopped), 2 garlic cloves, roughly chopped thumb-sized piece ginger (roughly chopped), 4 tbsp korma paste, 4 skinless, boneless chicken breasts, cut into bite-sized pieces, 50g ground almonds, plus extra to serve (optional), 4 tbsp sultanas, 400ml chicken stock, ¼ tsp golden caster sugar, 150g pot 0% fat Greek yogurt, small bunch coriander, chopped",
-        "method": "Put 1 chopped onion, 2 roughly chopped garlic cloves and a roughly chopped thumb-sized piece of ginger in a food processor and whizz to a paste, Tip the paste into a large high-sided frying pan with 3 tbsp water and cook for 5 mins. Add 4 tbsp korma paste and cook for a further 2 mins until aromatic, Stir 4 skinless, boneless chicken breasts, cut into bite-sized pieces, into the sauce. Add 50g ground almonds, 4 tbsp sultanas, 400ml chicken stock and ¼ tsp golden caster sugar, Give everything a good mix, then cover and simmer for 10 mins or until the chicken is cooked through, Remove the pan from the heat, stir in a 150g pot Greek yogurt and some seasoning, then scatter over a small bunch of chopped coriander and more ground almonds, if using. Serve with brown or white basmati rice.", 
-        "image": "static/img/chicken_korma.jpg",
-        "url": "chickem-korma"
+        
+        "recipe_name": "Spicy Vegetable & Quinoa One-pot"
+        "recipe_type": "Vegetable"
+        "recipe_image": "static/img/Spicy_vegetable.jpg"
+        "ingredient_1": "1 onion sliced"
+        "ingredient_2": "4 tbsp vegetarian korma or Madras curry paste"
+        "ingredient_3": "1L milk"
+        "ingredient_4": "750g frozen mixed vegetable"
+        "ingredient_5": "175g quinoa rinsed"
+        "ingredient_6": ""
+        "ingredient_7": ""
+        "ingredient_8": ""
+        "ingredient_9": ""
+        "method_1": "Simmer the onion and the curry paste with a splash of water for 5 mins..."
+        "method_2": "Heat the milk in a jug in the microwave"
+        "method_3": "Add the vegetables and quinoa, then stir in the milk"
+        "method_4": "Bring to the boil, simmer gently for 10 mins until the quinoa is cooke..."
+        "method_5": "Check seasoning"
+        "method_6": "Serve with warm naan bread"
+        "method_7": ""
+        "method_8": ""
+        "method_9": ""
+        "create_on": "11/02/2020"
+        "prep_time": "5 mins"
+        "cook_time": "15 mins"
     },
     {
-        "name": "Moroccan Lamb",
-        "ingredients": "500g lamb, neck fillets, cut into bite-size pieces, 2 tsp paprika, 3 tsp ground cinnamon, 2 x 400g/14oz cans chopped tomato with olive oil and garlic, 1 tbsp finely chopped parsley, plus extra to serve",
-        "method": "Heat a large, non-stick frying pan. Cook the lamb well on all sides without adding extra oil. Tip in the spices, then fry for 1 min more until aromatic, Pour in the chopped tomatoes and parsley, bring to the boil, then simmer gently, with a lid on, for 30 mins or until the lamb is tender. Serve sprinkled with more parsley.",
-        "image": "static/img/moroccan_lamb.jpg",
-        "url": "moroccan-lamb"
+        "recipe_name": "Fruity Lamb Tagine"
+        "recipe_type": "Lamb"
+        "recipe_image": "static/img/Fruity_Lamb_Tagine.jpg"
+        "ingredient_1": "2 tbsp olive oil"
+        "ingredient_2": "500g lean diced Lamb"
+        "ingredient_3": "1 large Inion, roughly chopped"
+        "ingredient_4": "2 large Carrots, quartered lengthways and cut into chunks"
+        "ingredient_5": "2 Garlic cloves, finely chopped"
+        "ingredient_6": "2 tbsp ras-el-hanout spice mix"
+        "ingredient_7": "400g can chopped tomato"
+        "ingredient_8": "400g can chickpea, rinsed and drained"
+        "ingredient_9": "200g dried apricot, 600ml chicken stock"
+        "method_1": "Heat oven to 180C/160C fan/gas 4."
+        "method_2": "Heat the oil in a casserole and brown the lamb on all sides"
+        "method_3": "Scoop the lamb out onto a plate, then add the onion and carrots and cook for 2-3 mins until golden."
+        "method_4": "Add the garlic and cook for 1 min more. Stir in the spices and tomatoes, and season."
+        "method_5": "Tip the lamb back in with the chickpeas and apricots. Pour over the stock, stir and bring to a simmer. Cover the dish and place in the oven for 1 hr."
+        "method_6": "If the lamb is still a little tough, give it 20 mins more until tender"
+        "method_7": "When ready, leave it to rest so it’s not piping hot, then serve scattered with pomegranate and herbs, with couscous or rice alongside."
+        "method_8": ""
+        "method_9": ""
+        "create_on": "Jul 26, 2020"
+        "prep_time": "15 mins"
+        "cook_time": "1 hrs 30mins"
     },
     {
-        "name": "Spicy Vegetable & Quinoa One-pot",
-        "ingredients": "1 onion, sliced, 4 tbsp vegetarian korma or Madras curry paste, 1l milk, 750g frozen mixed vegetable, 175g quinoa, rinsed",
-        "method": "Simmer the onion and the curry paste with a splash of water for 5 mins in a large saucepan, stirring from time to time. Heat the milk in a jug in the microwave, Add the vegetables and quinoa, then stir in the milk. Bring to the boil, simmer gently for 10 mins until the quinoa is cooked. Check seasoning. Serve with warm naan bread.", 
-        "image": "static/img/Spicy_vegetable.jpg",
-        "url": "spicy-veg"
+        "recipe_name": "Crispy Chilli Beef"
+        "recipe_type": "Beef"
+        "recipe_image": "static/img/Crispy_Chilli_Beef.jpg"
+        "ingredient_1": "350g thin-cut minute steak  , very thinly sliced into strips"
+        "ingredient_2": "3 tbsp cornflour, 2 tsp Chinese five-spice powder, 100ml vegetable oil"
+        "ingredient_3": "1 red pepper, thinly sliced, 1 red chilli, thinly sliced"
+        "ingredient_4": "4 spring onions  , sliced, green and white parts separated"
+        "ingredient_5": "2 garlic cloves, crushed, thumb-sized piece ginger  , cut into matchsticks"
+        "ingredient_6": "4 tbsp rice wine vinegar or white wine vinegar"
+        "ingredient_7": "1 tbsp soy sauce, 2 tbsp sweet chilli sauce"
+        "ingredient_8": "2 tbsp tomato ketchup"
+        "ingredient_9": "cooked noodles, to serve (optional), prawn   crackers, to serve (optional)"
+        "method_1": "Put 350g thin-cut minute steak strips in a bowl and toss in 3 tbsp cornflour and 2 tsp Chinese five-spice powder."
+        "method_2": "Heat 100ml vegetable oil in a wok or large frying pan until hot, then add the beef and fry until golden and crisp."
+        "method_3": "Scoop out the beef and drain on kitchen paper. Pour away all but 1 tbsp oil."
+        "method_4": "Add 1 thinly sliced red pepper, ½ thinly sliced red chilli, sliced white ends of 4 spring onions, 2 crushed garlic cloves and thumb-sized piece ginger, cut into matchsticks, to the pan. Stir-fry for 3 mins to soften, but don’t let the garlic and ginger burn."
+        "method_5": "Mix the 4 tbsp rice wine vinegar or white wine vinegar, 1 tbsp soy sauce, 2 tbsp sweet chilli sauce and 2 tbsp tomato ketchup in a jug with 2 tbsp water, then pour over the veg."
+        "method_6": "Bubble for 2 mins, then add the beef back to the pan and toss well to coat."
+        "method_7": "Serve the beef on noodles with prawn crackers, if you like, scattered with the remaining ½ sliced red chilli and sliced green parts of the spring onions."
+        "method_8": ""
+        "method_9": ""
+        "create_on": "Feb 17, 2020"
+        "prep_time": "25 mins"
+        "cook_time": "15 mins"
     }
 
 ]

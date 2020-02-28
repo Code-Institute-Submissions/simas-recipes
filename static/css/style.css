@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700|Abel:100,200,300,400,500,600,700|Crimson Text:100,200,300,400,500,600,700|Baloo:100,200,300,400,500,600,700|Lato:300,400,700,900');
 
-body {
+/*body {
   font-size: 20px;
   color: #212529;
-  /*font-family: 'Lora', 'Times New Roman', serif;*/
-}
+  font-family: 'Lora', 'Times New Roman', serif;
+}*/
 
 p {
   line-height: 1.5;
   margin: 0;
+  font-family: 'Cuprum', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 p a {
@@ -458,4 +459,99 @@ span {
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+}
+
+.card-chick{
+  font-size: 56px;
+  font-weight: 400;
+  background-color: #d19a04;
+  color: #000;
+  /*margin: auto;*/
+  border-radius: 40px;
+  line-height: 110%;
+  margin: 30px 0 30px 0;
+}
+
+.dashhead{
+  text-align: center;
+  font-weight: 400;
+  font-family: 'Cuprum', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  line-height: 110%;
+  margin-bottom: 15px;
+}
+
+.card-lamb{
+  font-size: 30px;
+  background-color: #c74108;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.card-veg{
+  font-size: 30px;
+  background-color: #3e6796;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+  
+}
+
+.card-seafood{
+  font-size: 30px;
+  background-color: #09a8b0;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.cat_head{
+  padding-left: 60px;
+  position: relative;
+  width: 100%;
+  padding-right: 5px;
+  /*padding-left: 5px;*/
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.card-beef{
+  font-size: 30px;
+  /*background-color: #ba0b28;*/
+  color: #ba0b28;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.card-healthy{
+  font-size: 30px;
+  background-color: #3d944b;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.card-u30{
+  font-size: 30px;
+  background-color: #6a1a99;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.card-o30{
+  font-size: 30px;
+  background-color: #0d5f85;
+  color: #000;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.collapsible-dash {
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  margin: 10px 0 10px 0;
 }

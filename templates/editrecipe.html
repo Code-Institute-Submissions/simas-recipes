@@ -29,12 +29,28 @@
                 </select>
             </div>
             <h5>Upload a Image:</h5>
-            <div class="file-field input-field col s12">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">photo_filter</i>
+                <select id="recipe_image" name="recipe_image">
+                    <option value="" disabled selected>Recipe Image</option>
+                                                
+                        {% for image in images %}
+                        
+                            {% if image.recipe_image == recipe.recipe_image %}
+                                <option value="{{image.recipe_image}}" selected>{{image.recipe_image}}</option>
+                            {% else %}
+                                <option value="{{image.recipe_image}}">{{image.recipe_image}}</option>
+                            {% endif %}
+                        {% endfor %}
+                                                            
+                </select>
+            </div>
+            <!--<div class="file-field input-field col s12">
                 <span class="btn col s3"><i class="material-icons">image</i>
                     <input type="file" value="{{ recipe.recipe_image }}">
                 </span>
                 <input class="file-path validate file-path-wrapper col s9" type="text" value="{{ recipe.recipe_image }}">
-            </div>
+            </div>-->
             <h5>Add Ingredient(s):</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">ballot</i>

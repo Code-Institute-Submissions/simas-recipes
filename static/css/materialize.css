@@ -3436,7 +3436,7 @@ table span.badge {
 
 @media only screen and (min-width: 601px) {
   .container {
-    width: 85%;
+    width: 90%;
   }
 }
 
@@ -4478,7 +4478,7 @@ nav .input-field label.active i {
   }
   nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     height: 64px;
-    line-height: 64px;
+    /*line-height: 64px;*/
   }
   .navbar-fixed {
     height: 64px;

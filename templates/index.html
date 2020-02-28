@@ -1,7 +1,99 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <span class="dashhead"> Recipe(s) available in every Catagory</span>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-chick collapsible collapsible-dash">
+                <span class="col-9 cat_head">
+                    Chicken
+                </span>
+                <h2 class="col-3">
+                    {{ recipe_chicken|selectattr('recipe_type', 'equalto', 'Chicken')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-lamb collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Lamb
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_lamb|selectattr('recipe_type', 'equalto', 'Lamb')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-seafood collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Sea Food
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_seafood|selectattr('recipe_type', 'equalto', 'Sea Food')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-veg collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Vegetable
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_veg|selectattr('recipe_type', 'equalto', 'Vegetable')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-beef collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Beef
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_seafood|selectattr('recipe_type', 'equalto', 'Beef')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-healthy collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Healthy
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_veg|selectattr('recipe_type', 'equalto', 'Healthy')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    
+    <span class="dashhead"> Recipe(s) can be ready in minutes</span>
+    
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-beef collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    under 30
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_25|selectattr('cook_time', 'lessthan', '31')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-healthy collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Over 30
+                </h2>
+                <h2 class="col-3">
+                    {{ recipe_35|selectattr('cook_time', 'greaterthan', '31')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
     <h2>About us</h2>
+    
     <p>
         As well as helping you decide what to cook we can also help you to cook it. From tips on cookery techniques to facts and information about health and nutrition, we’ve a wealth of foodie know how for you to explore.
     </p>
@@ -13,11 +105,5 @@
     <p>
         All our recipes are tested thoroughly by us to make sure they’re suitable for your kitchen at home. We know many of you are concerned about healthy eating, so we send them to a qualified nutritionist for thorough analysis too.
     </p>
-    <div>
-    <form method="POST" action = "/create" encrypt="multipart.form-data">
-            <input type="text" name = "recipe_name">
-            <input type="file" name = "recipe_image">
-            <input type="submit">
-    </form>
-    </div>
+    
 {% endblock %}

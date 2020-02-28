@@ -10,6 +10,7 @@ from bson.objectid import ObjectId
 import json
 from bson import json_util
 from bson.json_util import dumps
+import re
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET", "recipechat")
@@ -17,14 +18,7 @@ app.secret_key = os.getenv("SECRET", "recipechat")
 app.config["MONGO_DBNAME"] = "SimaRecipes"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 
-
-#app.config["DBS_NAME"] = "SimaRecipes"
-#app.config["COLLECTION_NAME"] = "recipes"
-
 recipe = PyMongo(app)
-mongo = PyMongo(app)
-
-recipe.FIELDS = {'recipe_name': True, 'recipe_type': True, 'create_on': True}
 
 def mongo_connect(url):
     try:
@@ -44,7 +38,16 @@ def add_messages(username, message):
 
 @app.route("/")
 def index():
-    return render_template("index.html", recipes = recipe.db.recipes.find())
+    return render_template("index.html", 
+    recipe_chicken = recipe.db.recipes.find(),
+    recipe_veg = recipe.db.recipes.find(),
+    recipe_lamb = recipe.db.recipes.find(),
+    recipe_seafood = recipe.db.recipes.find(),
+    recipe_beef = recipe.db.recipes.find(),
+    recipe_healthy = recipe.db.recipes.find(),
+    recipe_25 = recipe.db.recipes.find(),
+    recipe_35 = recipe.db.recipes.find())
+    
 
 @app.route("/SimaRecipes/recipes")
 def simasrecipe_project():
@@ -66,9 +69,10 @@ def recipes():
 def search_recipe():
     return render_template("searchrecipe.html", page_title="Recipes", recipes = recipe.db.recipes.find())
 
-@app.route("/find_recipe", methods=["GET","POST"])
+@app.route("/find_recipe")
 def find_recipe():
-    return render_template("searchrecipe.html", recipes = recipe.db.recipes.find())
+    
+    return render_template("searchrecipe.html")
 
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
@@ -130,7 +134,8 @@ def admin():
     return render_template("admin.html", page_title ="Admin",
     categories = recipe.db.categories.find(), 
     recipes = recipe.db.recipes.find(),
-    category = recipe.db.categories.find())
+    category = recipe.db.categories.find(),
+    images = recipe.db.images.find())
     
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
@@ -148,7 +153,8 @@ def insert_category():
 def edit_recipe(task_id):
     the_recipe = recipe.db.recipes.find_one({"_id": ObjectId(task_id)})
     all_categories = recipe.db.categories.find()
-    return render_template("editrecipe.html", page_title="Edit Recipe", recipe = the_recipe, categories = all_categories)
+    all_images = recipe.db.images.find()
+    return render_template("editrecipe.html", page_title="Edit Recipe", recipe = the_recipe, categories = all_categories, images = all_images)
     
 @app.route("/edit_category/<cat_id>")
 def edit_category(cat_id):
@@ -187,7 +193,8 @@ def update_recipe(task_id):
         'cook_time': request.form.get('cook_time')
     })
     return redirect(url_for("recipes"))
-    
+ 
+
 @app.route("/update_category/<cat_id>", methods=["POST"])
 def update_category(cat_id):
     updatecategory = recipe.db.categories
@@ -216,30 +223,6 @@ def about_recipe(recipe_name):
             if obj["url"] == recipe_name:
                 recipe = obj
     return render_template("description.html", recipe=recipe)
-
-
-@app.route('/description')
-def description():
-    return'''
-        <form method="POST" action = "/create" encrypt="multipart.form-data">
-            <input type="text" name = "username">
-            <input type="file" name="profile_image">
-            <input type="submit">
-        </form>
-    '''
-    
-@app.route('/create', methods=['POST'])
-def create():
-    if 'recipe_image' in request.files:
-        recipe_image = request.files['recipe_image']
-        recipe.save_file(recipe_image.filename, recipe_image)
-        recipe.db.images.insert({'recipe_name' : request.form.get('recipe_name'), 'recipe_image_name' : recipe_image.filename})
-        
-    return 'Done'
-
-
-
-
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "0.0.0.0"),

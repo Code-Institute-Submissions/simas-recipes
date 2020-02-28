@@ -6,7 +6,7 @@
         <li>
             <span>
                 <div class="row">
-                    <form action="/find_recipe" method="POST" class="col s12">
+                    <form action="{{ url_for('find_recipe', recipe_name = recipes.recipe_name) }} " method="POST" class="col s12">
                         <h5>Search for Recipe(s):</h5>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">search</i>
