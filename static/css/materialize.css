@@ -4530,7 +4530,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3.56rem;
+  font-size: 40px;
   line-height: 110%;
   margin: 2.3733333333rem 0 1.424rem 0;
 }
@@ -5846,7 +5846,7 @@ body.keyboard-focused .dropdown-content li:focus {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
-  margin: 0.5rem 0 0.5 0;
+  margin: 8px 0 8px 0;
 }
 
 .collapsible-header {
