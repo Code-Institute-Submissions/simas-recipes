@@ -462,14 +462,14 @@ span {
 }
 
 .card-chick{
-  font-size: 56px;
+  font-size: 40px;
   font-weight: 400;
-  background-color: #d19a04;
-  color: #000;
-  /*margin: auto;*/
-  border-radius: 40px;
-  line-height: 110%;
+  border-radius: 5px;
+  line-height: 100px;
   margin: 30px 0 30px 0;
+  /*background-color: #d19a04;*/
+  color: #d19a04;
+  /*margin: auto;*/
 }
 
 .dashhead{
@@ -507,13 +507,14 @@ span {
 }
 
 .cat_head{
-  padding-left: 60px;
+  padding-left: 30px;
   position: relative;
   width: 100%;
   padding-right: 5px;
   /*padding-left: 5px;*/
   flex: 0 0 75%;
   max-width: 75%;
+  margin-top: 30px;
 }
 
 .card-beef{
@@ -547,11 +548,4 @@ span {
   color: #000;
   margin: auto;
   border-radius: 10px;
-}
-
-.collapsible-dash {
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  margin: 10px 0 10px 0;
 }

@@ -52,7 +52,7 @@
                     Beef
                 </h2>
                 <h2 class="col-3">
-                    {{ recipe_seafood|selectattr('recipe_type', 'equalto', 'Beef')|list|length }}
+                    {{ recipe_beef|selectattr('recipe_type', 'equalto', 'Beef')|list|length }}
                 </h2>
             </div>
         </div>
@@ -62,7 +62,7 @@
                     Healthy
                 </h2>
                 <h2 class="col-3">
-                    {{ recipe_veg|selectattr('recipe_type', 'equalto', 'Healthy')|list|length }}
+                    {{ recipe_healthy|selectattr('recipe_type', 'equalto', 'Healthy')|list|length }}
                 </h2>
             </div>
         </div>
