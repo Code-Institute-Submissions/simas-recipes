@@ -17,7 +17,7 @@
             <span>
                 <div class="row">
                     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
-                            <!--<div class="row">-->
+                            
                         <h5>Recipe Name:</h5>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">outdoor_grill</i>
@@ -48,12 +48,6 @@
                                                                 
                             </select>
                         </div>
-                        <!--<div class="file-field input-field col s12">
-                            <span class="btn col s3"><i class="material-icons">image</i>
-                                <input type="file">
-                            </span>
-                            <input class="file-path validate file-path-wrapper col s9" id="recipe_image" name="recipe_image" type="text">
-                        </div>-->
                         <h5>Add Ingredient(s):</h5>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">ballot</i>
@@ -296,22 +290,22 @@
             <i class="material-icons">note_add</i> Add a new Category
         </div>
         <span>
-                <div class="row">
-                    <form action="{{ url_for('insert_category') }}" method="POST" class="col-12">
-                        <h5>Category Name:</h5>
-                        <div class="input-field col-12">
-                            <i class="material-icons prefix">outdoor_grill</i>
-                            <input id="category_name" name="category_name" type="text" class="validate">
-                            <label for="icon_prefix">Category Name</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add Category
-                                    <i class="material-icons right">send</i>
-                            </button>
-                        </div>
-                    </form>
-                </div>  
-            </span>
+            <div class="row">
+                <form action="{{ url_for('insert_category') }}" method="POST" class="col-12">
+                    <h5>Category Name:</h5>
+                    <div class="input-field col-12">
+                        <i class="material-icons prefix">outdoor_grill</i>
+                        <input id="category_name" name="category_name" type="text" class="validate">
+                        <label for="icon_prefix">Category Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Category
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>  
+        </span>
     </li>
 </ul>
 
@@ -333,8 +327,8 @@
             </div>
             <div>
                 <i class="material-icons">
-                            photo_filter
-                        </i> {{cate.category_name}}
+                    photo_filter
+                </i> {{cate.category_name}}
             </div>
         </div>
     </li>

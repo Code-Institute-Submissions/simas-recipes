@@ -35,6 +35,7 @@ def add_messages(username, message):
     now = datetime.now().strftime("%H:%M:%S")
     #messages_dict = {"timestamp": now, "from": username, "message": message}
     messages.append({"timestamp": now, "from": username, "message": message})
+    
 
 @app.route("/")
 def index():
@@ -65,14 +66,19 @@ def simasrecipe_project():
 def recipes():
     return render_template("recipes.html", page_title="Recipes", recipes = recipe.db.recipes.find())
     
-@app.route("/search_recipe")
-def search_recipe():
-    return render_template("searchrecipe.html", page_title="Recipes", recipes = recipe.db.recipes.find())
-
 @app.route("/find_recipe")
 def find_recipe():
-    
-    return render_template("searchrecipe.html")
+    find_recipes = recipe.db.recipes.find()
+    return render_template("searchrecipe.html", page_title="Recipes", recipes = find_recipes)
+
+query = {'recipe_name':{'$regex': 'lamb', '$options':'i'}}
+
+@app.route("/search_recipe")
+def search_recipe():
+    all_recipe = recipe.db.recipes.find(query)
+    return render_template("searchrecipe.html", 
+    page_title="Recipes", 
+    recipes = all_recipe)
 
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
