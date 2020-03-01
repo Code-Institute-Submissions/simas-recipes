@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+    {% if session['logged_in'] %}
+    
+        You're logged in already!
+    
+    {% else %}
+    
+    <form method="POST">
+        <div class="form-group floating-label-form-group controls">
+            <label for="chatname">Username:</label>
+            <input type="text" class="form-control" placeholder="Username" id="chatname" name="chatname" required data-validation-required-message="Please enter your username.">
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="chatMessageButton">
+                <a href="{{ url_for('user', username = chatname) }}" Chat to us</button>
+        </div>
+    </form>
+    <br>
+    {% endif %}
+
+{% endblock %}

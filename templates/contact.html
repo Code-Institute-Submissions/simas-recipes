@@ -5,7 +5,7 @@
     <ul class="collapsible">
     <div class="row">
         <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
-            <!--{% with messages = get_flashed_messages() %}
+            {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul class="flashes">
                 {% for message in messages %}
@@ -13,7 +13,7 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            {% endwith %}-->
+            {% endwith %}
             <p class="contact-form">Like to get in touch with us? Please, fill out the form below to send us a message and we will get back to you as soon as possible!</p>
             <p>* - Fields are required</p>
             
@@ -60,16 +60,20 @@
         </div>
     </div>
     </ul>
-    <!--<h4>Like to CHAT to us? Please click on button below <i class="far fa-smile"></i></h4>
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <br>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="chatMessageButton">
-                    <a href="{{ url_for('chat') }}">Chat to us</a>
-                </button>
+    
+    <ul class="collapsible">
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <p class="contact-form">Like to CHAT to us? Please click on button below <i class="far fa-smile"></i></p>
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn waves-effect waves-light" id="chatMessageButton">
+                        <a href="{{ url_for('chat') }}">Chat to us</a>
+                    </button>
+                
+                </div>
             </div>
         </div>
-    </div>-->
+    </ul>
     
 {% endblock %}
