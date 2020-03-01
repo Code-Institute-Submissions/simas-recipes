@@ -88,6 +88,31 @@ recipe.db.recipes.ensure_index([
   }
 )
 
+#recipe.db.recipes.aggregate([
+#    {
+#        $searchBeta: {
+#            "search": {
+#                "query": "several",
+#                "path": ["recipe_name", "recipe_type"]
+#            }
+#        }
+#    }
+#])
+
+# Requires the PyMongo package.
+# https://api.mongodb.com/python/current
+
+#client = MongoClient('recipes')
+#result = client['SimaRecipes']['recipes'].aggregate([
+#    {
+#        '$project': {
+#           'recipe_name': 1, 
+#            '_id': 0, 
+#            'recipe_type': 1
+#        }
+#    }
+#])
+
 '''@app.route("/search_recipe", methods = ["GET", "POST"])
 def search_recipe():
     query = request.form['search_name']
@@ -167,7 +192,7 @@ def admin():
     categories = recipe.db.categories.find(), 
     recipes = recipe.db.recipes.find(),
     category = recipe.db.categories.find(),
-    images = recipe.db.images.find())
+    images = recipe.db.images.find().sort('recipe_image'))
     
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
