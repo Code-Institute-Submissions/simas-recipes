@@ -338,7 +338,7 @@ header.masthead .post-heading .meta a {
   border-radius: 0;
   background: none;
   box-shadow: none !important;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Cuprum', 'Times New Roman', serif;
 }
 
 .floating-label-form-group input::-webkit-input-placeholder,
@@ -467,7 +467,10 @@ span {
   border-radius: 5px;
   line-height: 100px;
   margin: 30px 0 30px 0;
-  color: #d19a04;
+  color: #fff;
+  /*color: #d19a04;*/
+  background-color: #d19a04;
+  border-color: #d19a04;
 }
 
 .dashhead{
@@ -485,24 +488,35 @@ span {
   border-radius: 5px;
   line-height: 100px;
   margin: 30px 0 30px 0;
-  color: #c74108;
+  /*color: #c74108;*/
+  color: #fff;
+  background-color: #c74108;
+  border-color: #c74108;
 }
 
 .card-veg{
   font-size: 30px;
-  background-color: #3e6796;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #3e6796;*/
   color: #fff;
-  margin: auto;
-  border-radius: 10px;
+  background-color: #3e6796;
+  border-color: #c74108;
   
 }
 
 .card-seafood{
   font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #09a8b0;*/
+  color: #fff;
   background-color: #09a8b0;
-  color: #000;
-  margin: auto;
-  border-radius: 10px;
+  border-color: #09a8b0;
 }
 
 .cat_head{
@@ -510,10 +524,8 @@ span {
   position: relative;
   width: 100%;
   padding-right: 5px;
-  /*padding-left: 5px;*/
   flex: 0 0 75%;
   max-width: 75%;
-  margin-top: 30px;
 }
 
 .cat-value{
@@ -522,33 +534,133 @@ span {
 
 .card-beef{
   font-size: 30px;
-  /*background-color: #ba0b28;*/
-  color: #ba0b28;
-  background-color: #fff;
-  margin: auto;
-  border-radius: 10px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #ba0b28;*/
+  color: #fff;
+  background-color: #ba0b28;
+  border-color: #ba0b28;
 }
 
 .card-healthy{
   font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #3d944b;*/
+  color: #fff;
   background-color: #3d944b;
-  color: #000;
-  margin: auto;
-  border-radius: 10px;
+  border-color: #3d944b;
 }
 
 .card-u30{
   font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #6a1a99;*/
+  color: #fff;
   background-color: #6a1a99;
-  color: #000;
-  margin: auto;
-  border-radius: 10px;
+  border-color: #6a1a99;
 }
 
 .card-o30{
   font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #0d5f85;*/
+  color: #fff;
   background-color: #0d5f85;
-  color: #000;
-  margin: auto;
-  border-radius: 10px;
+  border-color: #0d5f85;
+}
+
+.contact-form{
+  margin-top: 40px;
+}
+
+.contact-thumb{
+  color: #ba0b28;
+}
+
+.recipe-thumb{
+  color: #6a1a99;
+}
+
+.admin-recipe-thumb{
+  color: #d19a04;
+}
+
+.admin-category-thumb{
+  color: #c74108;
+}
+
+.cat-veg{
+  color: #fff;
+  background-color: #3e6796;
+}
+
+.cat-veg-head{
+  color: #3e6796;
+  background-color: #fff;
+}
+
+.cat-chick{
+  color: #fff;
+  background-color: #d19a04;
+}
+
+.cat-chick-head{
+  color: #d19a04;
+  background-color: #fff;
+}
+
+.cat-lamb{
+  color: #fff;
+  background-color: #c74108;
+}
+
+.cat-lamb-head{
+  color: #c74108;
+  background-color: #fff;
+}
+
+.cat-seafood{
+  color: #fff;
+  background-color: #09a8b0;
+}
+
+.cat-seafood-head{
+  color: #09a8b0;
+  background-color: #fff;
+}
+
+.cat-beef{
+  color: #fff;
+  background-color: #ba0b28;
+}
+
+.cat-beef-head{
+  color: #ba0b28;
+  background-color: #fff;
+}
+
+.cat-healthy{
+  color: #fff;
+  background-color: #3d944b;
+}
+
+.cat-healthy-head{
+  color: #3d944b;
+  background-color: #fff;
+}
+
+.recipe-body{
+  color: #fff;
+  background-color: #5c5a54;
 }

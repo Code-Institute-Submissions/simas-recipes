@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>{{ page_title }}</h2><br>
+    <h2 class="recipe-thumb">{{ page_title }}</h2><br>
     <div class="row">
         <div class="col-6 col-md-4 col-xl-2 collapsible">
             <h6>Chicken</h6>
@@ -28,11 +28,11 @@
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header">
-                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    <i class="material-icons recipe-thumb">outdoor_grill</i> {{recipe.recipe_name}}
                     
                 </div>
                 
-                <div class="collapsible-body">
+                <div class="collapsible-body recipe-body">
                     <span>
                         <div class="row featurette">
                             {% if loop.index % 2 != 0 %}

@@ -170,7 +170,7 @@
 </ul>
 
 
-<h4>List of Recipes
+<h4>List of <span class="admin-recipe-thumb">Recipes</span>
     <h6>(for Amendement click on RECIPE)</h6>
 </h4>
 
@@ -181,7 +181,7 @@
         <div class="collapsible-header">
 
             <div class="col-md-12">
-                <i class="material-icons">
+                <i class="material-icons admin-recipe-thumb">
                             outdoor_grill
                         </i> {{recipe.recipe_name}}
             </div>
@@ -309,7 +309,7 @@
     </li>
 </ul>
 
-<h4>List of Categories</h4>
+<h4>List of <span class="admin-category-thumb">Categories</span></h4>
 
 {% for cate in category %}
 
@@ -326,7 +326,8 @@
                 </button>
             </div>
             <div>
-                <i class="material-icons">
+                
+                <i class="material-icons admin-category-thumb">
                     photo_filter
                 </i> {{cate.category_name}}
             </div>

@@ -17,7 +17,7 @@
                 <h2 class="col-9 cat_head">
                     Lamb
                 </h2>
-                <h2 class="col-3">
+                <h2 class="col-3 cat-value">
                     {{ recipe_lamb|selectattr('recipe_type', 'equalto', 'Lamb')|list|length }}
                 </h2>
             </div>
@@ -29,7 +29,7 @@
                 <h2 class="col-9 cat_head">
                     Sea Food
                 </h2>
-                <h2 class="col-3">
+                <h2 class="col-3 cat-value">
                     {{ recipe_seafood|selectattr('recipe_type', 'equalto', 'Sea Food')|list|length }}
                 </h2>
             </div>
@@ -39,7 +39,7 @@
                 <h2 class="col-9 cat_head">
                     Vegetable
                 </h2>
-                <h2 class="col-3">
+                <h2 class="col-3 cat-value">
                     {{ recipe_veg|selectattr('recipe_type', 'equalto', 'Vegetable')|list|length }}
                 </h2>
             </div>
@@ -51,7 +51,7 @@
                 <h2 class="col-9 cat_head">
                     Beef
                 </h2>
-                <h2 class="col-3">
+                <h2 class="col-3 cat-value">
                     {{ recipe_beef|selectattr('recipe_type', 'equalto', 'Beef')|list|length }}
                 </h2>
             </div>
@@ -61,7 +61,7 @@
                 <h2 class="col-9 cat_head">
                     Healthy
                 </h2>
-                <h2 class="col-3">
+                <h2 class="col-3 cat-value">
                     {{ recipe_healthy|selectattr('recipe_type', 'equalto', 'Healthy')|list|length }}
                 </h2>
             </div>
@@ -72,21 +72,21 @@
     
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <div class="row card-beef collapsible collapsible-dash">
-                <h4 class="col-9 cat_head">
-                    under 30 mins
-                </h4>
-                <h2 class="col-3">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    < 30 mins
+                </h2>
+                <h2 class="col-3 cat-value">
                     {{ recipe_25|selectattr('cook_time', 'lessthan', '31')|list|length }}
                 </h2>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
-            <div class="row card-healthy collapsible collapsible-dash">
-                <h4 class="col-9 cat_head">
-                    30 mins or more
-                </h4>
-                <h2 class="col-3">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    > 30 mins
+                </h2>
+                <h2 class="col-3 cat-value">
                     {{ recipe_35|selectattr('cook_time', 'greaterthan', '31')|list|length }}
                 </h2>
             </div>

@@ -66,19 +66,45 @@ def simasrecipe_project():
 def recipes():
     return render_template("recipes.html", page_title="Recipes", recipes = recipe.db.recipes.find())
     
-@app.route("/find_recipe")
-def find_recipe():
-    find_recipes = recipe.db.recipes.find()
-    return render_template("searchrecipe.html", page_title="Recipes", recipes = find_recipes)
-
-query = {'recipe_name':{'$regex': 'lamb', '$options':'i'}}
-
 @app.route("/search_recipe")
 def search_recipe():
+    return render_template("searchrecipe.html", page_title="Recipes", 
+    recipes_veg = recipe.db.recipes.find(),
+    recipes_chick = recipe.db.recipes.find(),
+    recipes_lamb = recipe.db.recipes.find(),
+    recipes_seafood = recipe.db.recipes.find(),
+    recipes_beef = recipe.db.recipes.find(),
+    recipes_healthy = recipe.db.recipes.find())
+
+query = {'recipe_name':{'$regex': 'veg', '$options':'i'}}
+recipe.db.recipes.ensure_index([
+      ('recipe_name', 'text'),
+      ('recipe_type', 'text'),
+  ],
+  name="search_index",
+  weights={
+      'recipe_name':100,
+      'recipe_type':25
+  }
+)
+
+'''@app.route("/search_recipe", methods = ["GET", "POST"])
+def search_recipe():
+    query = request.form['search_name']
+    text_results = recipe.db.recipes.command('text', 'posts', search=query)
+    doc_matches = (res['obj'] for res in text_results['results'])
+    return render_template("searchrecipe.html", recipes=text_results)
     all_recipe = recipe.db.recipes.find(query)
     return render_template("searchrecipe.html", 
     page_title="Recipes", 
-    recipes = all_recipe)
+    recipes = all_recipe)'''
+
+'''@app.route('/search')
+def search():
+    query = request.form['q']
+    text_results = db.command('text', 'posts', search=query, limit=SEARCH_LIMIT)
+    doc_matches = (res['obj'] for res in text_results['results'])
+    return render_template("search.html", results=results)'''
 
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():

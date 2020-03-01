@@ -7,11 +7,11 @@
         <li>
             <span>
                 <div class="row">
-                    <form action="find_recipe" method="GET" class="col-12">
+                    <form action="find_recipe" method="POST" class="col-12">
                         <h5>What Recipe are you looking for?</h5>
                         <div class="input-field col-12">
                             <i class="material-icons prefix">outdoor_grill</i>
-                            <input id="category_name" name="category_name" type="text" class="validate">
+                            <input id="search_name" name="search_name" type="text" class="validate">
                             <label for="icon_prefix">Search</label>
                         </div>
                         <div class="input-field col s12">
@@ -29,17 +29,19 @@
     </ul>
 
 
-    {% for recipe in recipes %}    
+    <h3 id="cat-chick">Chicken Recipes</h3>
+    {% for recipe in recipes_chick %}    
     
+    {% if recipe.recipe_type == "Chicken" %}
         
-        <ul class="collapsible">
+        <ul class="collapsible cat-chick-head">
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
                     
                 </div>
                 
-                <div class="collapsible-body">
+                <div class="collapsible-body cat-chick">
                     <span>
                         <div class="row featurette">
                             {% if loop.index % 2 != 0 %}
@@ -120,7 +122,487 @@
                 </div>
             </li>
         </ul>
+    {% endif %}
+    {% endfor %}
+    
+    <h3 id="cat-veg">Veg Recipes</h3>
+    {% for recipe in recipes_veg %}    
+    
+    {% if recipe.recipe_type == "Vegetable" %}
         
+        <ul class="collapsible cat-veg-head">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    
+                </div>
+                
+                <div class="collapsible-body cat-veg">
+                    <span>
+                        <div class="row featurette">
+                            {% if loop.index % 2 != 0 %}
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> {% else %}
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br>
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
+    {% endfor %}
+    
+    <h3 id="cat-lamb">Lamb Recipes</h3>
+    {% for recipe in recipes_lamb %}    
+    
+    {% if recipe.recipe_type == "Lamb" %}
+        
+        <ul class="collapsible cat-lamb-head">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    
+                </div>
+                
+                <div class="collapsible-body cat-lamb">
+                    <span>
+                        <div class="row featurette">
+                            {% if loop.index % 2 != 0 %}
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> {% else %}
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br>
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
+    {% endfor %}
+    
+    <h3 id="cat-seafood">Sea Food Recipes</h3>
+    {% for recipe in recipes_seafood %}    
+    
+    {% if recipe.recipe_type == "Sea Food" %}
+        
+        <ul class="collapsible cat-seafood-head">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    
+                </div>
+                
+                <div class="collapsible-body cat-seafood">
+                    <span>
+                        <div class="row featurette">
+                            {% if loop.index % 2 != 0 %}
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> {% else %}
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br>
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
+    {% endfor %}
+    
+    <h3 id="cat-beef">Beef Recipes</h3>
+    {% for recipe in recipes_beef %}    
+    
+    {% if recipe.recipe_type == "Beef" %}
+        
+        <ul class="collapsible cat-beef-head">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    
+                </div>
+                
+                <div class="collapsible-body cat-beef">
+                    <span>
+                        <div class="row featurette">
+                            {% if loop.index % 2 != 0 %}
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> {% else %}
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br>
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
+    {% endfor %}
+    
+    <h3 id="cat-healthy">Healthy Recipes</h3>
+    {% for recipe in recipes_healthy %}    
+    
+    {% if recipe.recipe_type == "Healthy" %}
+        
+        <ul class="collapsible cat-healthy-head">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                    
+                </div>
+                
+                <div class="collapsible-body cat-healthy">
+                    <span>
+                        <div class="row featurette">
+                            {% if loop.index % 2 != 0 %}
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> {% else %}
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br>
+                            <div class="col-md-7">
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
     {% endfor %}
     
 {% endblock %}
