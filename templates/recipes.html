@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2 class="recipe-thumb">{{ page_title }}</h2><br>
+    <h2 class="recipe-thumb">{{ page_title }}</h2>
     <div class="row">
         <div class="col-6 col-md-4 col-xl-2 collapsible">
             <h6>Chicken</h6>
@@ -37,6 +37,10 @@
                         <div class="row featurette">
                             {% if loop.index % 2 != 0 %}
                             <div class="col-md-7">
+                                <h5>Cuisine:</h5>
+                                <p>
+                                    <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>
+                                </p><br>
                                 <h5>Ingredient:</h5>
                                 <p>
                                     <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
@@ -75,6 +79,10 @@
                                 <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
                             </div><br>
                             <div class="col-md-7">
+                                <h5>Cuisine:</h5>
+                                <p>
+                                    <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>
+                                </p><br>
                                 <h5>Ingredient:</h5>
                                 <p>
                                     <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>

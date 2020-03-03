@@ -67,9 +67,30 @@
             </div>
         </div>
     </div>
-    
-    <br><span class="dashhead"> Recipe(s) can be ready in minutes</span><br>
-    
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-vegan collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Vegan
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_vegan|selectattr('recipe_type', 'equalto', 'Vegan')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-pork collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Pork
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_pork|selectattr('recipe_type', 'equalto', 'Pork')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <span class="dashhead"> Recipe(s) can be ready in minutes</span><br>
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="row card-u30 collapsible collapsible-dash">
@@ -92,6 +113,142 @@
             </div>
         </div>
     </div>
+    
+    <br>
+    <span class="dashhead"> Recipe(s) in every Cuisine</span><br>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    American Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_amc|selectattr('recipe_cuisine', 'equalto', 'American Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Australian Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_auc|selectattr('recipe_cuisine', 'equalto', 'Australian Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Canadian Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_cdc|selectattr('recipe_cuisine', 'equalto', 'Canadian Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Chinese Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_cnc|selectattr('recipe_cuisine', 'equalto', 'Chinese Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    European Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_euc|selectattr('recipe_cuisine', 'equalto', 'European Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Far Eastern Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_fec|selectattr('recipe_cuisine', 'equalto', 'Far Eastern Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Mediterranean Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_mdc|selectattr('recipe_cuisine', 'equalto', 'Mediterranean Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    Middle Eastern Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_mec|selectattr('recipe_cuisine', 'equalto', 'Middle Eastern Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    North African Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_nac|selectattr('recipe_cuisine', 'equalto', 'North African Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    South African Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_safc|selectattr('recipe_cuisine', 'equalto', 'South African Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-u30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    South American Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_samc|selectattr('recipe_cuisine', 'equalto', 'South American Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row card-o30 collapsible collapsible-dash">
+                <h2 class="col-9 cat_head">
+                    South Asian Cuisine
+                </h2>
+                <h2 class="col-3 cat-value">
+                    {{ recipe_sasc|selectattr('recipe_cuisine', 'equalto', 'South Asian Cuisine')|list|length }}
+                </h2>
+            </div>
+        </div>
+    </div>
+    
     <h2>About us</h2>
     
     <p>

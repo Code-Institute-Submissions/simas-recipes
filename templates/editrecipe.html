@@ -45,6 +45,23 @@
                                                             
                 </select>
             </div>
+            <h5>Choose a Cuisine:</h5>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">photo_filter</i>
+                <select id="recipe_cuisine" name="recipe_cuisine">
+                    <option value="" disabled selected>Cuisine</option>
+                                                
+                        {% for cuisine in cuisines %}
+                        
+                            {% if cuisine.cuisine_name == recipe.recipe_cuisine %}
+                                <option value="{{cuisine.cuisine_name}}" selected>{{cuisine.cuisine_name}}</option>
+                            {% else %}
+                                <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                                                            
+                </select>
+            </div>
             <!--<div class="file-field input-field col s12">
                 <span class="btn col s3"><i class="material-icons">image</i>
                     <input type="file" value="{{ recipe.recipe_image }}">

@@ -1,174 +1,246 @@
 {% extends 'base.html' %} {% block content %}
 
-<button type="button" class="btn waves-effect waves-light">
+<button id="top-page" type="button" class="btn waves-effect waves-light">
     <a href ="{{ url_for('logout') }}">
         Log Out
     </a>
 </button>
 
 <h2>{{ page_title }}</h2>
-
-<ul class="collapsible">
+    <div class="row">
+        <div class="col-12">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">note_add</i> Add a new Recipe
+                </div>
+                <div class="collapsible-body admin-recipe-back">
+                    <span>
+                        <div class="row">
+                            <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
+                                    
+                                <h5>Recipe Name:</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">outdoor_grill</i>
+                                    <input id="recipe_name" name="recipe_name" type="text" class="validate" required data-validation-required-message="Please enter recipe name.">
+                                    <label for="icon_prefix">Recipe Name</label>
+                                </div>
+                                <h5>Choose a Category:</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">photo_filter</i>
+                                    <select id="recipe_type" name="recipe_type">
+                                        <option value="" disabled selected>Recipe Type</option>
+                                                        
+                                        {% for cat in categories %}
+                                            <option value="{{cat.category_name}}" required data-validation-required-message="Please choose a Category.">{{cat.category_name}}</option>
+                                        {% endfor %}
+                                                                        
+                                    </select>
+                                </div>
+                                <h5>Upload a Image:</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">photo_filter</i>
+                                    <select id="recipe_image" name="recipe_image">
+                                        <option value="" disabled selected>Recipe Image</option>
+                                                        
+                                        {% for image in images %}
+                                            <option value="{{image.recipe_image}}">{{image.recipe_image}}</option>
+                                        {% endfor %}
+                                                                        
+                                    </select>
+                                </div>
+                                <h5>Choose a Cuisine:</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">photo_filter</i>
+                                    <select id="recipe_type" name="recipe_type">
+                                        <option value="" disabled selected>Recipe Type</option>
+                                                        
+                                        {% for cuisine in cuisines %}
+                                            <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
+                                        {% endfor %}
+                                                                        
+                                    </select>
+                                </div>
+                                <h5>Add Ingredient(s):</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_1" name="ingredient_1" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(1)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_2" name="ingredient_2" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(2)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_3" name="ingredient_3" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(3)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_4" name="ingredient_4" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(4)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_5" name="ingredient_5" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(5)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_6" name="ingredient_6" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(6)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_7" name="ingredient_7" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(7)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_8" name="ingredient_8" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(8)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">ballot</i>
+                                    <input id="ingredient_9" name="ingredient_9" type="text" class="validate">
+                                    <label for="icon_prefix">Ingredient(9)</label>
+                                </div>
+                                <h5>Add Method(s):</h5>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_1" name="method_1" type="text" class="validate">
+                                    <label for="icon_prefix">method(1)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_2" name="method_2" type="text" class="validate">
+                                    <label for="icon_prefix">method(2)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_3" name="method_3" type="text" class="validate">
+                                    <label for="icon_prefix">method(3)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_4" name="method_4" type="text" class="validate">
+                                    <label for="icon_prefix">method(4)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_5" name="method_5" type="text" class="validate">
+                                    <label for="icon_prefix">method(5)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_6" name="method_6" type="text" class="validate">
+                                    <label for="icon_prefix">method(6)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_7" name="method_7" type="text" class="validate">
+                                    <label for="icon_prefix">method(7)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_8" name="method_8" type="text" class="validate">
+                                    <label for="icon_prefix">method(8)</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">restaurant</i>
+                                    <input id="method_9" name="method_9" type="text" class="validate">
+                                    <label for="icon_prefix">method(9)</label>
+                                </div>
+                                <h5>Choose a Date:</h5>
+                                <div id="matfix" class="input-field col s12">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input id="create_on" name="create_on" type="text" class="datepicker">
+                                    <label for="icon_prefix">Date of Creation</label>
+                                </div>
+                                <h5>Provide time (mins):</h5>
+                                <div id="matfix" class="input-field col s12">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="prep_time" name="prep_time" type="text" class="validate"  required data-validation-required-message="Please enter preparation time.">
+                                    <label for="icon_prefix">Preparation Time</label>
+                                </div>
+                                <div id="matfix" class="input-field col s12">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="cook_time" name="cook_time" type="text" class="validate" required data-validation-required-message="Please enter cooking time.">
+                                    <label for="icon_prefix">Cooking Time</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-12 col-sm-6 col-xl-6 col-md-6">
+        <ul class="collapsible">
     <li>
         <div class="collapsible-header">
-            <i class="material-icons">note_add</i> Add a new Recipe
+            <i class="material-icons">note_add</i> Add a new Category
         </div>
         <div class="collapsible-body">
             <span>
                 <div class="row">
-                    <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
-                            
-                        <h5>Recipe Name:</h5>
-                        <div class="input-field col s12">
+                    <form action="{{ url_for('insert_category') }}" method="POST" class="col-12">
+                        <h5>Category Name:</h5>
+                        <div class="input-field col-12">
                             <i class="material-icons prefix">outdoor_grill</i>
-                            <input id="recipe_name" name="recipe_name" type="text" class="validate">
-                            <label for="icon_prefix">Recipe Name</label>
-                        </div>
-                        <h5>Choose a Category:</h5>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">photo_filter</i>
-                            <select id="recipe_type" name="recipe_type">
-                                <option value="" disabled selected>Recipe Type</option>
-                                                
-                                {% for cat in categories %}
-                                    <option value="{{cat.category_name}}">{{cat.category_name}}</option>
-                                {% endfor %}
-                                                                
-                            </select>
-                        </div>
-                        <h5>Upload a Image:</h5>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">photo_filter</i>
-                            <select id="recipe_image" name="recipe_image">
-                                <option value="" disabled selected>Recipe Image</option>
-                                                
-                                {% for image in images %}
-                                    <option value="{{image.recipe_image}}">{{image.recipe_image}}</option>
-                                {% endfor %}
-                                                                
-                            </select>
-                        </div>
-                        <h5>Add Ingredient(s):</h5>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_1" name="ingredient_1" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(1)</label>
+                            <input id="category_name" name="category_name" type="text" class="validate">
+                            <label for="icon_prefix">Category Name</label>
                         </div>
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_2" name="ingredient_2" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(2)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_3" name="ingredient_3" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(3)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_4" name="ingredient_4" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(4)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_5" name="ingredient_5" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(5)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_6" name="ingredient_6" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(6)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_7" name="ingredient_7" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(7)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_8" name="ingredient_8" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(8)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">ballot</i>
-                            <input id="ingredient_9" name="ingredient_9" type="text" class="validate">
-                            <label for="icon_prefix">Ingredient(9)</label>
-                        </div>
-                        <h5>Add Method(s):</h5>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_1" name="method_1" type="text" class="validate">
-                            <label for="icon_prefix">method(1)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_2" name="method_2" type="text" class="validate">
-                            <label for="icon_prefix">method(2)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_3" name="method_3" type="text" class="validate">
-                            <label for="icon_prefix">method(3)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_4" name="method_4" type="text" class="validate">
-                            <label for="icon_prefix">method(4)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_5" name="method_5" type="text" class="validate">
-                            <label for="icon_prefix">method(5)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_6" name="method_6" type="text" class="validate">
-                            <label for="icon_prefix">method(6)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_7" name="method_7" type="text" class="validate">
-                            <label for="icon_prefix">method(7)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_8" name="method_8" type="text" class="validate">
-                            <label for="icon_prefix">method(8)</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">restaurant</i>
-                            <input id="method_9" name="method_9" type="text" class="validate">
-                            <label for="icon_prefix">method(9)</label>
-                        </div>
-                        <h5>Choose a Date:</h5>
-                        <div id="matfix" class="input-field col s12">
-                            <i class="material-icons prefix">date_range</i>
-                            <input id="create_on" name="create_on" type="text" class="datepicker">
-                            <label for="icon_prefix">Date of Creation</label>
-                        </div>
-                        <h5>Provide time (mins):</h5>
-                        <div id="matfix" class="input-field col s12">
-                            <i class="material-icons prefix">access_time</i>
-                            <input id="prep_time" name="prep_time" type="text" class="validate">
-                            <label for="icon_prefix">Preparation Time</label>
-                        </div>
-                        <div id="matfix" class="input-field col s12">
-                            <i class="material-icons prefix">access_time</i>
-                            <input id="cook_time" name="cook_time" type="text" class="validate">
-                            <label for="icon_prefix">Cooking Time</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Add Category
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
                     </form>
-                </div>
+                </div>  
             </span>
         </div>
     </li>
 </ul>
-
+    </div>
+    <div class="col-12 col-sm-6 col-xl-6 col-md-6">
+        <ul class="collapsible">
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">note_add</i> Add a new Cuisine
+        </div>
+        <div class="collapsible-body">
+            <span>
+            <div class="row">
+                <form action="{{ url_for('insert_cuisine') }}" method="POST" class="col-12">
+                    <h5>Category Name:</h5>
+                    <div class="input-field col-12">
+                        <i class="material-icons prefix">outdoor_grill</i>
+                        <input id="cuisine_name" name="cuisine_name" type="text" class="validate">
+                        <label for="icon_prefix">Cuisine Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Cuisine
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>  
+        </span>
+        </div>
+    </li>
+</ul>
+    </div>
+    </div>
 
 <h4>List of <span class="admin-recipe-thumb">Recipes</span>
     <h6>(for Amendement click on RECIPE)</h6>
@@ -179,102 +251,117 @@
 <ul class="collapsible">
     <li>
         <div class="collapsible-header">
-
             <div class="col-md-12">
-                <i class="material-icons admin-recipe-thumb">
-                            outdoor_grill
-                        </i> {{recipe.recipe_name}}
+                <i class="material-icons recipe-thumb">
+                    outdoor_grill
+                </i> 
+                {{recipe.recipe_name}}
             </div>
-
         </div>
 
-        <div class="collapsible-body">
+        <div class="collapsible-body admin-recipe-back">
             <span>
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-success">
-                                <a href ="{{ url_for('edit_recipe', task_id=recipe._id) }}">Edit</a>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <a href ="{{ url_for('delete_recipe', task_id=recipe._id) }}">Delete</a>
-                            </button>
-                        </div><br>
-                        <div class="row featurette">
-                            {% if loop.index % 2 != 0 %}
-                            
-                                <div class="col-md-7">
-                                    <h5>Ingredient:</h5>
-                                    <p>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
-                                    </p><br>
-                                    <h5>Method:</h5>
-                                    <p>
-                                        <i class="fas fa-check"></i> {{recipe.method_1}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_2}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_3}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_4}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_5}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_6}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_7}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_8}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_9}}<br>
-                                    </p><br>
-                                    <p>
-                                        <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
-                                    <p>
-                                        <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
-                                    <p>
-                                        <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
-                                </div>
-                                <div class="col-md-5">
-                                    <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
-                                </div><br> {% else %}
-                                <div class="col-md-5">
-                                    <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
-                                </div><br>
-                                <div class="col-md-7">
-                                    <h5>Ingredient:</h5>
-                                    <p>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
-                                        <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
-                                    </p><br>
-                                    <h5>Method:</h5>
-                                    <p>
-                                        <i class="fas fa-check"></i> {{recipe.method_1}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_2}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_3}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_4}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_5}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_6}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_7}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_8}}<br>
-                                        <i class="fas fa-check"></i> {{recipe.method_9}}<br>
-                                    </p><br>
-                                    <p>
-                                        <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
-                                    <p>
-                                        <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
-                                    <p>
-                                        <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
-                                </div>
-                            
-                            {% endif %}
-                        </div>
-                    </span>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-success">
+                        <a href ="{{ url_for('edit_recipe', task_id=recipe._id) }}">Edit</a>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <a href ="{{ url_for('delete_recipe', task_id=recipe._id) }}">Delete</a>
+                    </button>
+                </div><br>
+                <div class="row featurette">
+                    {% if loop.index % 2 != 0 %}
+                
+                    <div class="col-md-7">
+                        <h5>Category:</h5>
+                        <p>
+                            <i class="fas fa-fire"></i> {{recipe.recipe_type}}<br>
+                        </p><br>
+                        <h5>Cuisine:</h5>
+                        <p>
+                            <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>
+                        </p><br>
+                        <h5>Ingredient:</h5>
+                        <p>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                        </p><br>
+                        <h5>Method:</h5>
+                        <p>
+                            <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                        </p><br>
+                        <p>
+                            <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                        <p>
+                            <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                        <p>
+                            <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                    </div><br> {% else %}
+                    <div class="col-md-5">
+                        <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                    </div><br>
+                    <div class="col-md-7">
+                        <h5>Category:</h5>
+                        <p>
+                            <i class="fas fa-fire"></i> {{recipe.recipe_type}}<br>
+                        </p><br>
+                        <h5>Cuisine:</h5>
+                        <p>
+                            <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>
+                        </p><br>
+                        <h5>Ingredient:</h5>
+                        <p>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                            <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                        </p><br>
+                        <h5>Method:</h5>
+                        <p>
+                            <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                            <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                        </p><br>
+                        <p>
+                            <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                        <p>
+                            <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                        <p>
+                            <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                    </div>
+                
+                    {% endif %}
+                </div>
+            </span>
         </div>
     </li>
 </ul>
@@ -282,40 +369,15 @@
 {% endfor %}
 
 <br>
-<!--<h4>Add new Category</h4> -->
-
-<ul class="collapsible">
-    <li>
-        <div class="collapsible-header">
-            <i class="material-icons">note_add</i> Add a new Category
-        </div>
-        <span>
-            <div class="row">
-                <form action="{{ url_for('insert_category') }}" method="POST" class="col-12">
-                    <h5>Category Name:</h5>
-                    <div class="input-field col-12">
-                        <i class="material-icons prefix">outdoor_grill</i>
-                        <input id="category_name" name="category_name" type="text" class="validate">
-                        <label for="icon_prefix">Category Name</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Category
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
-            </div>  
-        </span>
-    </li>
-</ul>
-
-<h4>List of <span class="admin-category-thumb">Categories</span></h4>
-
-{% for cate in category %}
 
 <ul class="collapsible col-12">
     <li>
         <div class="collapsible-header">
+            <h4>List of <span class="admin-category-thumb">Categories</span></h4>
+        </div>
+        
+        <div class="collapsible-body admin-category-back">
+            {% for cate in category %}
             <div>
                 <button type="button" class="btn waves-effect waves-light">
                     <a href ="{{ url_for('edit_category', cat_id=cate._id) }}">Edit</a>
@@ -324,17 +386,44 @@
                 <button type="button" class="btn btn-danger">
                     <a href ="{{ url_for('delete_category', cat_id=cate._id) }}">Delete</a>
                 </button>
-            </div>
-            <div>
-                
                 <i class="material-icons admin-category-thumb">
                     photo_filter
                 </i> {{cate.category_name}}
-            </div>
+            </div><br>
+            {% endfor %}
         </div>
     </li>
 </ul>
 
-{% endfor %} 
+<br>
+
+<ul class="collapsible col-12">
+    <li>
+        <div class="collapsible-header">
+            <h4>List of <span class="admin-cuisine-thumb">Cuisines</span></h4>
+        </div>
+        <div class="collapsible-body admin-cuisine-back">
+            {% for cuisine in cuisines_list %}
+            <div>
+                <button type="button" class="btn waves-effect waves-light">
+                    <a href ="{{ url_for('edit_cuisine', cus_id=cuisine._id) }}">Edit</a>
+                </button>
+                <button type="button" class="btn btn-danger">
+                    <a href ="{{ url_for('delete_cuisine', cus_id=cuisine._id) }}">Delete</a>
+                </button>
+                <i class="material-icons admin-cuisine-thumb">
+                    photo_filter
+                </i> {{cuisine.cuisine_name}}
+            </div><br>
+            {% endfor %} 
+        </div>
+    </li>
+</ul>
+
+<div class="fixed-action-btn">
+    <a href="#top-page" class="btn-floating red card-top">
+        Top
+    </a>
+</div>
 
 {% endblock %}

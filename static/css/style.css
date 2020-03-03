@@ -494,6 +494,18 @@ span {
   border-color: #c74108;
 }
 
+.card-pork{
+  font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #c74108;*/
+  color: #fff;
+  background-color:  #148f77;
+  border-color:  #148f77;
+}
+
 .card-veg{
   font-size: 30px;
   font-weight: 400;
@@ -556,6 +568,18 @@ span {
   border-color: #3d944b;
 }
 
+.card-vegan{
+  font-size: 30px;
+  font-weight: 400;
+  border-radius: 5px;
+  line-height: 100px;
+  margin: 30px 0 30px 0;
+  /*color: #3d944b;*/
+  color: #fff;
+  background-color: #f1c40f;
+  border-color: #f1c40f;
+}
+
 .card-u30{
   font-size: 30px;
   font-weight: 400;
@@ -592,12 +616,27 @@ span {
   color: #6a1a99;
 }
 
-.admin-recipe-thumb{
-  color: #d19a04;
+.admin-recipe-back{
+  color: #fff;
+  background-color: #6a1a99;
 }
 
 .admin-category-thumb{
   color: #c74108;
+}
+
+.admin-category-back{
+  color: #fff;
+  background-color: #c74108;
+}
+
+.admin-cuisine-thumb{
+  color: #d19a04;
+}
+
+.admin-cuisine-back{
+  color: #fff;
+  background-color: #d19a04;
 }
 
 .cat-veg{
@@ -627,6 +666,16 @@ span {
 
 .cat-lamb-head{
   color: #c74108;
+  background-color: #fff;
+}
+
+.cat-pork{
+  color: #fff;
+  background-color:  #148f77;
+}
+
+.cat-pork-head{
+  color:  #148f77;
   background-color: #fff;
 }
 
@@ -660,7 +709,42 @@ span {
   background-color: #fff;
 }
 
+.cat-vegan{
+  color: #fff;
+  background-color: #f1c40f;
+}
+
+.cat-vegan-head{
+  color: #f1c40f;
+  background-color: #fff;
+}
+
 .recipe-body{
   color: #fff;
   background-color: #5c5a54;
+}
+
+.link-cat{
+  font-size: 2.28rem;
+  font-weight: 400;
+  font-family: 'Cuprum', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.card-top{
+  height: 50px;
+  width: 50px;
+  font-size: 40px;
+  font-weight: 800;
+  font-family: 'Cuprum', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-radius: 50px;
+  margin: 30px 0 30px 0;
+  color: #fff;
+  background-color: #c74108;
+  border-color: #c74108;
+  line-height: 54px;
+  padding: 0 28px;
+}
+
+.recipe_head{
+  font-weight: 800;
 }

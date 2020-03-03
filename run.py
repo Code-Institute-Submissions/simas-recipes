@@ -46,8 +46,22 @@ def index():
     recipe_seafood = recipe.db.recipes.find(),
     recipe_beef = recipe.db.recipes.find(),
     recipe_healthy = recipe.db.recipes.find(),
+    recipe_vegan = recipe.db.recipes.find(),
+    recipe_pork = recipe.db.recipes.find(),
     recipe_25 = recipe.db.recipes.find(),
-    recipe_35 = recipe.db.recipes.find())
+    recipe_35 = recipe.db.recipes.find(),
+    recipe_amc = recipe.db.recipes.find(),
+    recipe_auc = recipe.db.recipes.find(),
+    recipe_cdc = recipe.db.recipes.find(),
+    recipe_cnc = recipe.db.recipes.find(),
+    recipe_euc = recipe.db.recipes.find(),
+    recipe_fec = recipe.db.recipes.find(),
+    recipe_mdc = recipe.db.recipes.find(),
+    recipe_mec = recipe.db.recipes.find(),
+    recipe_nac = recipe.db.recipes.find(),
+    recipe_safc = recipe.db.recipes.find(),
+    recipe_samc = recipe.db.recipes.find(),
+    recipe_sasc = recipe.db.recipes.find())
     
 
 @app.route("/SimaRecipes/recipes")
@@ -64,79 +78,34 @@ def simasrecipe_project():
     
 @app.route("/recipes")
 def recipes():
-    return render_template("recipes.html", page_title="Recipes", recipes = recipe.db.recipes.find())
+    return render_template("recipes.html", 
+    page_title="Recipes", 
+    recipes = recipe.db.recipes.find().sort('recipe_name'))
     
-query = {'recipe_name':{'$regex': 'veg', '$options':'i'}}
-recipe.db.recipes.ensure_index([
-      ('recipe_name', 'text'),
-      ('recipe_type', 'text'),
-  ],
-  name="search_index",
-  weights={
-      'recipe_name':100,
-      'recipe_type':25
-  }
-)
 
-#recipe.db.recipes.aggregate([
-#    {
-#        $searchBeta: {
-#            "search": {
-#                "query": "several",
-#                "path": ["recipe_name", "recipe_type"]
-#            }
-#        }
-#    }
-#])
-
-# Requires the PyMongo package.
-# https://api.mongodb.com/python/current
-
-#client = MongoClient('recipes')
-#result = client['SimaRecipes']['recipes'].aggregate([
-#    {
-#        '$project': {
-#           'recipe_name': 1, 
-#            '_id': 0, 
-#            'recipe_type': 1
-#        }
-#    }
-#])
-
-'''@app.route('/search')
-def search():
-    query = request.form['q']
-    text_results = db.command('text', 'posts', search=query, limit=SEARCH_LIMIT)
-    doc_matches = (res['obj'] for res in text_results['results'])
-    return render_template("search.html", results=results)'''
-
-
-@app.route("/search_recipe", methods = ["GET", "POST"])
+@app.route("/search_recipe")
 def search_recipe():
-    
-    if request.method == "POST":
-        search_name = request.form["search_name"]
-        return redirect(url_for('find_recipe', search_name= search_name))
-        
     return render_template("searchrecipe.html", page_title="Recipes", 
-    recipes_veg = recipe.db.recipes.find(),
-    recipes_chick = recipe.db.recipes.find(),
-    recipes_lamb = recipe.db.recipes.find(),
-    recipes_seafood = recipe.db.recipes.find(),
-    recipes_beef = recipe.db.recipes.find(),
-    recipes_healthy = recipe.db.recipes.find())
-
-@app.route("/search_recipe/<search_name>", methods = ["POST", "GET"])
-def find_recipe(search_name):
-    if request.method == 'POST':
-        query = request.form['search_name']
-        #text_results = recipe.db.recipes.command('text', 'posts', search=query)
-        #doc_matches = (res['obj'] for res in text_results['results'])
-        #return render_template("searchrecipe.html", recipes=text_results)
-        return redirect(url_for("find_recipe", all_recipe = recipe.db.recipes.find(query)))
-        #return render_template("searchrecipe.html", 
-        #page_title="Recipes", 
-        #recipes = all_recipe)
+    recipes_veg = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_chick = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_lamb = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_seafood = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_beef = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_healthy = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_vegan = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_pork = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_amc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_auc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_cdc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_cnc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_euc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_fec = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_mdc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_mec = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_nac = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_safc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_samc = recipe.db.recipes.find().sort('recipe_name'),
+    recipes_sasc = recipe.db.recipes.find().sort('recipe_name'))
 
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
@@ -197,20 +166,28 @@ def logout():
 def admin():
     return render_template("admin.html", page_title ="Admin",
     categories = recipe.db.categories.find(), 
-    recipes = recipe.db.recipes.find(),
-    category = recipe.db.categories.find(),
-    images = recipe.db.images.find().sort('recipe_image'))
+    recipes = recipe.db.recipes.find().sort('recipe_name'),
+    category = recipe.db.categories.find().sort('category_name'),
+    images = recipe.db.images.find().sort('recipe_image'),
+    cuisines = recipe.db.cuisines.find().sort('cuisine_name'),
+    cuisines_list = recipe.db.cuisines.find().sort('cuisine_name'))
     
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     addrecipes = recipe.db.recipes
     addrecipes.insert_one(request.form.to_dict())
-    return redirect(url_for("recipes"))
+    return redirect(url_for("admin"))
   
 @app.route("/insert_category", methods=["POST"])
 def insert_category():
     addcategory = recipe.db.categories
     addcategory.insert_one(request.form.to_dict())
+    return redirect(url_for("admin"))
+    
+@app.route("/insert_cuisine", methods=["POST"])
+def insert_cuisine():
+    addcuisine = recipe.db.cuisines
+    addcuisine.insert_one(request.form.to_dict())
     return redirect(url_for("admin"))
 
 @app.route("/edit_recipe/<task_id>")
@@ -218,13 +195,20 @@ def edit_recipe(task_id):
     the_recipe = recipe.db.recipes.find_one({"_id": ObjectId(task_id)})
     all_categories = recipe.db.categories.find()
     all_images = recipe.db.images.find()
-    return render_template("editrecipe.html", page_title="Edit Recipe", recipe = the_recipe, categories = all_categories, images = all_images)
+    all_cuisines = recipe.db.cuisines.find().sort('cuisine_name')
+    return render_template("editrecipe.html", page_title="Edit Recipe", recipe = the_recipe, categories = all_categories, images = all_images, cuisines = all_cuisines)
     
 @app.route("/edit_category/<cat_id>")
 def edit_category(cat_id):
-    '''the_recipe = recipe.db.categories.find_one({"_id": ObjectId(cat_id)})
-    all_categories = recipe.db.categories.find()'''
-    return render_template("editcategory.html", page_title="Edit Category", category = recipe.db.categories.find_one({'_id': ObjectId(cat_id)}))
+    return render_template("editcategory.html", 
+    page_title="Edit Category", 
+    category = recipe.db.categories.find_one({'_id': ObjectId(cat_id)}))
+    
+@app.route("/edit_cuisine/<cus_id>")
+def edit_cuisine(cus_id):
+    return render_template("editcuisine.html", 
+    page_title="Edit Cuisine", 
+    cuisines = recipe.db.cuisines.find_one({'_id': ObjectId(cus_id)}))
     
 @app.route("/update_recipe/<task_id>", methods=["POST"])
 def update_recipe(task_id):
@@ -234,6 +218,7 @@ def update_recipe(task_id):
         'recipe_name': request.form.get('recipe_name'),
         'recipe_type': request.form.get('recipe_type'),
         'recipe_image': request.form.get('recipe_image'),
+        'recipe_cuisine': request.form.get('recipe_cuisine'),
         'ingredient_1': request.form.get('ingredient_1'),
         'ingredient_2': request.form.get('ingredient_2'),
         'ingredient_3': request.form.get('ingredient_3'),
@@ -256,7 +241,7 @@ def update_recipe(task_id):
         'prep_time': request.form.get('prep_time'),
         'cook_time': request.form.get('cook_time')
     })
-    return redirect(url_for("recipes"))
+    return redirect(url_for("admin"))
  
 
 @app.route("/update_category/<cat_id>", methods=["POST"])
@@ -267,15 +252,29 @@ def update_category(cat_id):
         'category_name' : request.form.get('category_name')
     })
     return redirect(url_for('admin'))
+    
+@app.route("/update_cuisine/<cus_id>", methods=["POST"])
+def update_cuisine(cus_id):
+    updatecuisine = recipe.db.cuisines
+    updatecuisine.update({'_id': ObjectId(cus_id)},
+    {
+        'cuisine_name' : request.form.get('cuisine_name')
+    })
+    return redirect(url_for('admin'))
 
 @app.route('/delete_recipe/<task_id>')
 def delete_recipe(task_id):
     recipe.db.recipes.remove({'_id': ObjectId(task_id)})
-    return redirect(url_for('recipes'))
+    return redirect(url_for('admin'))
     
 @app.route('/delete_category/<cat_id>')
 def delete_category(cat_id):
     recipe.db.categories.remove({'_id': ObjectId(cat_id)})
+    return redirect(url_for('admin'))
+    
+@app.route('/delete_cuisine/<cus_id>')
+def delete_cuisine(cus_id):
+    recipe.db.cuisines.remove({'_id': ObjectId(cus_id)})
     return redirect(url_for('admin'))
 
 @app.route("/recipes/<recipe_name>")
@@ -292,4 +291,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "0.0.0.0"),
             port=int(os.environ.get("PORT", "5000")),
             debug=True)
-            
