@@ -4,10 +4,14 @@
     <h2>{{ page_title }}</h2>
     
     <div class="row">
+        
+        <!--To Edit Catagory through 'update_category/<cat_id> route-->
         <form action="{{ url_for('update_category', cat_id = category._id) }}" method="POST" class="col s12">
             <h5>Category Name:</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">photo_filter</i>
+                
+                <!--To choose right Category through provided options-->
                 <input id="category_name" name="category_name" type="text" class="validate" value="{{category.category_name}}">
                 <label for="icon_prefix">Category Name</label>
             </div>

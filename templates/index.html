@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <span class="dashhead"> Recipe(s) available in every Catagory</span><br>
+    <span id ="top-page" class="dashhead"> Recipe(s) available in every Catagory</span><br>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for CHICKEN-->
         <div class="col-md-6 col-sm-12">
             <div class="row card-chick collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
@@ -12,7 +15,9 @@
                 </h2>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for LAMB-->
+        <div class="col-md-6 col-sm-12" title="Available 'LAMB' Recipes">
             <div class="row card-lamb collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Lamb
@@ -23,8 +28,11 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for SEA FOOD-->
+        <div class="col-md-6 col-sm-12" title="Available 'SEA FOOD' Recipes">
             <div class="row card-seafood collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Sea Food
@@ -34,7 +42,9 @@
                 </h2>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for VEGETABLE-->
+        <div class="col-md-6 col-sm-12" title="Available 'VEGETABLE' Recipes">
             <div class="row card-veg collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Vegetable
@@ -45,8 +55,11 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for BEEF-->
+        <div class="col-md-6 col-sm-12" title="Available 'BEEF' Recipes">
             <div class="row card-beef collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Beef
@@ -56,7 +69,9 @@
                 </h2>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for HEALTHY-->
+        <div class="col-md-6 col-sm-12" title="Available 'HEALTHY' Recipes">
             <div class="row card-healthy collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Healthy
@@ -67,8 +82,11 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for VEGAN-->
+        <div class="col-md-6 col-sm-12" title="Available 'VEGAN' Recipes">
             <div class="row card-vegan collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Vegan
@@ -78,7 +96,9 @@
                 </h2>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available for PORK-->
+        <div class="col-md-6 col-sm-12" title="Available 'PORK' Recipes">
             <div class="row card-pork collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Pork
@@ -90,9 +110,13 @@
         </div>
     </div>
     <br>
+    
     <span class="dashhead"> Recipe(s) can be ready in minutes</span><br>
+    
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        
+        <!--Amount of recipes available which can be ready under 30 mins-->
+        <div class="col-md-6 col-sm-12" title="Recipes can be ready 'UNDER 30 MINS'">
             <div class="row card-u30 collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     < 30 mins
@@ -102,6 +126,8 @@
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available which can be take over 30 mins to be ready-->
         <div class="col-md-6 col-sm-12">
             <div class="row card-o30 collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
@@ -115,22 +141,28 @@
     </div>
     
     <br>
+    
     <span class="dashhead"> Recipe(s) in every Cuisine</span><br>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for AMERICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    American Cuisine
+                    American
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_amc|selectattr('recipe_cuisine', 'equalto', 'American Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for AUSTRALIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Australian Cuisine
+                    Australian
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_auc|selectattr('recipe_cuisine', 'equalto', 'Australian Cuisine')|list|length }}
@@ -138,21 +170,26 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for CANADIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Canadian Cuisine
+                    Canadian
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_cdc|selectattr('recipe_cuisine', 'equalto', 'Canadian Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for CHINESE CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Chinese Cuisine
+                    Chinese
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_cnc|selectattr('recipe_cuisine', 'equalto', 'Chinese Cuisine')|list|length }}
@@ -160,21 +197,26 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for EUROPIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    European Cuisine
+                    European
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_euc|selectattr('recipe_cuisine', 'equalto', 'European Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for FAR EASTERN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Far Eastern Cuisine
+                    Far Eastern
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_fec|selectattr('recipe_cuisine', 'equalto', 'Far Eastern Cuisine')|list|length }}
@@ -182,21 +224,26 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for MEDITERRANEAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Mediterranean Cuisine
+                    Mediterranean
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_mdc|selectattr('recipe_cuisine', 'equalto', 'Mediterranean Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for MIDDLE EASTERN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Middle Eastern Cuisine
+                    Middle Eastern
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_mec|selectattr('recipe_cuisine', 'equalto', 'Middle Eastern Cuisine')|list|length }}
@@ -204,21 +251,26 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for NORTH AFRICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    North African Cuisine
+                    N. African
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_nac|selectattr('recipe_cuisine', 'equalto', 'North African Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for SOUTH AFRICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    South African Cuisine
+                    S. African
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_safc|selectattr('recipe_cuisine', 'equalto', 'South African Cuisine')|list|length }}
@@ -226,21 +278,26 @@
             </div>
         </div>
     </div>
+    
     <div class="row">
+        
+        <!--Amount of recipes available for SOUTH AMERICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-u30 collapsible collapsible-dash">
+            <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    South American Cuisine
+                    S. American
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_samc|selectattr('recipe_cuisine', 'equalto', 'South American Cuisine')|list|length }}
                 </h2>
             </div>
         </div>
+        
+        <!--Amount of recipes available for SOUTH ASIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
-            <div class="row card-o30 collapsible collapsible-dash">
+            <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    South Asian Cuisine
+                    S. Asian
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_sasc|selectattr('recipe_cuisine', 'equalto', 'South Asian Cuisine')|list|length }}
@@ -262,5 +319,12 @@
     <p>
         All our recipes are tested thoroughly by us to make sure they’re suitable for your kitchen at home. We know many of you are concerned about healthy eating, so we send them to a qualified nutritionist for thorough analysis too.
     </p>
-    
+
+    <!--For floating TOP button on right hand bottom corner-->
+    <div class="fixed-action-btn">
+        <a href="#top-page" class="btn-floating red card-top">
+            Top
+        </a>
+    </div>
+
 {% endblock %}

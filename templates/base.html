@@ -4,47 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Cuprum:400,400i,700,700i|Josefin+Sans:400,600,700|Laila|Libre+Baskerville:400,400i,700|Overlock+SC|Roboto:400,500i,700,700i,900,900i|Tangerine&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" type="text/css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dc.min.css') }}" type="text/css" />
     
-    <!--Supporting JavaScript file for Charts-->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/crossfilter.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dc.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/queue.min.js') }}"></script>
+    <!--Google Font link-->
+    <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Cuprum:400,400i,700,700i|Josefin+Sans:400,600,700|Laila|Libre+Baskerville:400,400i,700|Overlock+SC|Roboto:400,500i,700,700i,900,900i|Tangerine&display=swap" rel="stylesheet">
+    
+    <!--Bootstrap CSS link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" />
+
+    <!--Style CSS link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    
+    <!--Fontawesome CSS Link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" type="text/css" />
+    
+    <!--Materialize Icons link-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Materialize CSS link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" />
     
     <title>Sima's Recipes</title>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
+            
+            <!--Link to index.html with site heading-->
             <a class="navbar-brand" href="{{ url_for('index') }}">Sima's Recipes</a>
+            
+            <!--Collapsiable button for small link and Navigation bar-->
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-                </button>
+                Menu
+            </button>
+            
+            <!--List of menu options-->
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                    </li>-->
+                    
+                    <!--link to recipes route on python file-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('recipes') }}">Recipes</a>
                     </li>
+                    
+                    <!--link to contact route on python file-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
                     </li>
+                    
+                    <!--link to chat route on python file-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('chat') }}">Chat</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('search_recipe') }}">Search</a>
-                    </li>
+                    
+                    <!--link to admin route on python file-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('loginuser') }}">Admin</a>
                     </li>
@@ -61,7 +74,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Sima's Recipes</h1>
-                        <span class="subheading">Finger leaking yummy recipes</span>
+                        <span class="subheading">Finger licking yummy recipes</span>
                     </div>
                 </div>
             </div>
@@ -114,21 +127,24 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/graphs.js') }}"></script>
     
     <!-- Custom scripts for this template -->
     <script src="{{ url_for('static', filename='js/clean-blog.js') }}"></script>
+    
+    <!--Fontawesome javascript link-->
     <script src="https://kit.fontawesome.com/011e87d520.js" crossorigin="anonymous"></script>
+    
+    <!--Materialize javascript link-->
     <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.collapsible').collapsible();
-            $('select').formSelect();
-            $('.datepicker').datepicker();
-            $('.timepicker').timepicker();
-            $('.fixed-action-btn').floatingActionButton();
+            $('.collapsible').collapsible(); /*Materialize Collapsible jQuery*/
+            $('select').formSelect(); /*Materialize ComboBox option selection jQuery*/
+            $('.datepicker').datepicker(); /*Materialize Date picker jQuery*/
+            $('.fixed-action-btn').floatingActionButton(); /*Materialize floating button jQuery*/
         });
     </script>
+
 </body>
 </html>

@@ -4,13 +4,20 @@
     <h2>{{ page_title }}</h2>
     
     <div class="row">
+        
+        <!--A Form to EDIT all reuired field within a recipe trhough 'update_recipe/<task_id> route-->
         <form action="{{ url_for('update_recipe', task_id = recipe._id) }}" method="POST" class="col s12">
             <h5>Recipe Name:</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">outdoor_grill</i>
+                
+                <!--To Edit recipe name-->
                 <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
                 <label for="icon_prefix">Recipe Name</label>
             </div>
+            
+            
+            <!--To CHANGE category-->
             <h5>Choose a Category:</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">photo_filter</i>
@@ -28,7 +35,10 @@
                                                             
                 </select>
             </div>
-            <h5>Upload a Image:</h5>
+            
+            
+            <!--To CHANGE image-->
+            <h5>Change a Image:</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">photo_filter</i>
                 <select id="recipe_image" name="recipe_image">
@@ -45,6 +55,9 @@
                                                             
                 </select>
             </div>
+            
+            
+            <!--To CHANGE cuisine-->
             <h5>Choose a Cuisine:</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">photo_filter</i>
@@ -62,13 +75,10 @@
                                                             
                 </select>
             </div>
-            <!--<div class="file-field input-field col s12">
-                <span class="btn col s3"><i class="material-icons">image</i>
-                    <input type="file" value="{{ recipe.recipe_image }}">
-                </span>
-                <input class="file-path validate file-path-wrapper col s9" type="text" value="{{ recipe.recipe_image }}">
-            </div>-->
-            <h5>Add Ingredient(s):</h5>
+            
+            
+            <!--To Edit ingredient(s)-->
+            <h5>Edit Ingredient(s):</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">ballot</i>
                 <input id="ingredient_1" name="ingredient_1" type="text" class="validate" value="{{ recipe.ingredient_1 }}">
@@ -114,7 +124,10 @@
                 <input id="ingredient_9" name="ingredient_9" type="text" class="validate" value="{{ recipe.ingredient_9 }}">
                 <label for="icon_prefix">Ingredient(9)</label>
             </div>
-            <h5>Add Method(s):</h5>
+            
+            
+            <!--To Edit method(s)-->
+            <h5>Edit Method(s):</h5>
             <div class="input-field col s12">
                 <i class="material-icons prefix">restaurant</i>
                 <input id="method_1" name="method_1" type="text" class="validate" value="{{ recipe.method_1 }}">
@@ -160,13 +173,17 @@
                 <input id="method_9" name="method_9" type="text" class="validate" value="{{ recipe.method_9 }}">
                 <label for="icon_prefix">method(9)</label>
             </div>
-            <h5>Choose a Date:</h5>
+            
+            <!--To Change date-->
+            <h5>Change a Date:</h5>
             <div id="matfix" class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
                 <input id="create_on" name="create_on" type="text" class="datepicker" value="{{ recipe.create_on }}">
                 <label for="icon_prefix">Date of Creation</label>
             </div>
-            <h5>Provide time (mins):</h5>
+            
+            <!--To Edit time-->
+            <h5>Edit time (mins):</h5>
             <div id="matfix" class="input-field col s12">
                 <i class="material-icons prefix">access_time</i>
                 <input id="prep_time" name="prep_time" type="text" class="validate" value="{{ recipe.prep_time }}">

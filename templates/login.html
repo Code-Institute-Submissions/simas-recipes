@@ -7,6 +7,8 @@
         You're logged in already!
     
     {% else %}
+    
+        <!--To provide with username and password which will process through 'login' route-->
         <form action="/login" method="POST">
             <div class="login">
                 <div class="login-screen">
@@ -22,7 +24,7 @@
                             <input type="password" class="login-field" value="" placeholder="password" name="password">
                             <label class="login-field-icon fui-lock" for="login-pass"></label>
                         </div>
-                        <input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
+                        <input type="submit" value="Log in" class="btn btn-warning waves-effect waves-light">
         
                     </div>
                 </div>

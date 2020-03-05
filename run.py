@@ -15,11 +15,17 @@ import re
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET", "recipechat")
 
+
+# Connection with MongoDB
 app.config["MONGO_DBNAME"] = "SimaRecipes"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 
+
+# Variable to connected MongoDB database
 recipe = PyMongo(app)
 
+
+# MongoDB connection check
 def mongo_connect(url):
     try:
         conn = pymongo.MongoClient(url)
@@ -28,8 +34,11 @@ def mongo_connect(url):
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e
 
+# Empty array to store messages
 messages = []
 
+
+# for CHAT messages (chat.html)
 def add_messages(username, message):
     """Add messages to the messages list"""
     now = datetime.now().strftime("%H:%M:%S")
@@ -37,31 +46,32 @@ def add_messages(username, message):
     messages.append({"timestamp": now, "from": username, "message": message})
     
 
+# dashboard (index.html)
 @app.route("/")
 def index():
     return render_template("index.html", 
-    recipe_chicken = recipe.db.recipes.find(),
-    recipe_veg = recipe.db.recipes.find(),
-    recipe_lamb = recipe.db.recipes.find(),
-    recipe_seafood = recipe.db.recipes.find(),
-    recipe_beef = recipe.db.recipes.find(),
-    recipe_healthy = recipe.db.recipes.find(),
-    recipe_vegan = recipe.db.recipes.find(),
-    recipe_pork = recipe.db.recipes.find(),
-    recipe_25 = recipe.db.recipes.find(),
-    recipe_35 = recipe.db.recipes.find(),
-    recipe_amc = recipe.db.recipes.find(),
-    recipe_auc = recipe.db.recipes.find(),
-    recipe_cdc = recipe.db.recipes.find(),
-    recipe_cnc = recipe.db.recipes.find(),
-    recipe_euc = recipe.db.recipes.find(),
-    recipe_fec = recipe.db.recipes.find(),
-    recipe_mdc = recipe.db.recipes.find(),
-    recipe_mec = recipe.db.recipes.find(),
-    recipe_nac = recipe.db.recipes.find(),
-    recipe_safc = recipe.db.recipes.find(),
-    recipe_samc = recipe.db.recipes.find(),
-    recipe_sasc = recipe.db.recipes.find())
+    recipe_chicken = recipe.db.recipes.find(), # Variable to count Chicken recipes in database
+    recipe_veg = recipe.db.recipes.find(), # Variable to count Vegetable recipes in database
+    recipe_lamb = recipe.db.recipes.find(), # Variable to count Lamb recipes in database
+    recipe_seafood = recipe.db.recipes.find(), # Variable to count Sea Food recipes in database
+    recipe_beef = recipe.db.recipes.find(), # Variable to count Beef recipes in database
+    recipe_healthy = recipe.db.recipes.find(), # Variable to count Healthy recipes in database
+    recipe_vegan = recipe.db.recipes.find(), # Variable to count Vegan recipes in database
+    recipe_pork = recipe.db.recipes.find(), # Variable to count Pork recipes in database
+    recipe_25 = recipe.db.recipes.find(), # Variable to count recipes which can be ready under 30 mins in database
+    recipe_35 = recipe.db.recipes.find(), # Variable to count recipes which takes over 30 mins to ready in database
+    recipe_amc = recipe.db.recipes.find(), # Variable to count American Cuisine recipes in database
+    recipe_auc = recipe.db.recipes.find(), # Variable to count Australian Cuisine recipes in database
+    recipe_cdc = recipe.db.recipes.find(), # Variable to count Canadian Cuisine recipes in database
+    recipe_cnc = recipe.db.recipes.find(), # Variable to count Chinese Cuisine recipes in database
+    recipe_euc = recipe.db.recipes.find(), # Variable to count European Cuisine recipes in database
+    recipe_fec = recipe.db.recipes.find(), # Variable to count Far Eastern Cuisine recipes in database
+    recipe_mdc = recipe.db.recipes.find(), # Variable to count Meditarrenean Cuisine recipes in database
+    recipe_mec = recipe.db.recipes.find(), # Variable to count Middle Eastern Cuisine recipes in database
+    recipe_nac = recipe.db.recipes.find(), # Variable to count North African Cuisine recipes in database
+    recipe_safc = recipe.db.recipes.find(), # Variable to count South African Cuisine recipes in database
+    recipe_samc = recipe.db.recipes.find(), # Variable to count South American Cuisine recipes in database
+    recipe_sasc = recipe.db.recipes.find()) # Variable to count South Asian Cuisine recipes in database
     
 
 @app.route("/SimaRecipes/recipes")
@@ -75,147 +85,175 @@ def simasrecipe_project():
     return render_template("index.html", json_projects=json_projects)
         
 
-    
+# Recipes page (recipes.html)    
 @app.route("/recipes")
 def recipes():
     return render_template("recipes.html", 
     page_title="Recipes", 
-    recipes = recipe.db.recipes.find().sort('recipe_name'))
-    
+    recipes_veg = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Vegetable Recipes in database
+    recipes_chick = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Chicken Recipes in database
+    recipes_lamb = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Lamb Recipes in database
+    recipes_seafood = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Sea Food Recipes in database
+    recipes_beef = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Beef Recipes in database
+    recipes_healthy = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Healthy Recipes in database
+    recipes_vegan = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Vegan Recipes in database
+    recipes_pork = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Pork Recipes in database
+    recipes_amc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all American Cuisine Recipes in database
+    recipes_auc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Australian Cuisine Recipes in database
+    recipes_cdc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Canadian Cuisine Recipes in database
+    recipes_cnc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Chinese Cuisine Recipes in database
+    recipes_euc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all European Cuisine Recipes in database
+    recipes_fec = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Far Eastern Cuisine Recipes in database
+    recipes_mdc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Mediterranean Cuisine Recipes in database
+    recipes_mec = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Middle Eastern Cuisine Recipes in database
+    recipes_nac = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all North African Cuisine Recipes in database
+    recipes_safc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South African Cuisine Recipes in database
+    recipes_samc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South American Cuisine Recipes in database
+    recipes_sasc = recipe.db.recipes.find().sort('recipe_name')) # Variable to list all South Asian Cuisine Recipes in database
 
-@app.route("/search_recipe")
-def search_recipe():
-    return render_template("searchrecipe.html", page_title="Recipes", 
-    recipes_veg = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_chick = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_lamb = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_seafood = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_beef = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_healthy = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_vegan = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_pork = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_amc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_auc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_cdc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_cnc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_euc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_fec = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_mdc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_mec = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_nac = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_safc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_samc = recipe.db.recipes.find().sort('recipe_name'),
-    recipes_sasc = recipe.db.recipes.find().sort('recipe_name'))
 
+# Contact Us page (contact.html)
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
     if request.method == 'POST':
+        
+        # to display a verification message for sent email
         flash("Thanks {}, we have received your message!".format(
             request.form["name"]
         ))
         #print(request.form["name"])
     return render_template("contact.html", page_title="Contact")
 
+
+# chat page (chat.html)
 @app.route("/chat", methods = ["GET", "POST"])
 def chat():
     if request.method == "POST":
+        
+        # To verify username in exiting session
         session["username"] = request.form["chatname"]
         
     if "username" in session:
         #return redirect (session["username"])
+        # redirect to chat page
         return redirect (url_for("user", username = session["username"]))
         
     return render_template("chat.html")
-    
+
+
+# Username input (chat.html)    
 @app.route("/chat/<username>", methods=["GET", "POST"])
 def user(username):
-    """Display chat Messages"""
     
+    # Display chat Messages
     if request.method == "POST":
-        username = session["username"]
-        message = request.form["chatmessage"]
-        add_messages(username, message)
+        username = session["username"] # Add username into variable
+        message = request.form["chatmessage"] # store message(s) into variable
+        add_messages(username, message) # stored username and message output
         #return redirect(session["username"])
         return redirect (url_for("user", username = session["username"]))
         
     return render_template("chat.html", username = username, chat_messages = messages)
 
+
+# Intermediate page between Login and admin
 @app.route('/loginuser')
 def loginuser():
     '''return render_template("login.html")'''
-    if not session.get('logged_in'):
-        return render_template('login.html')
+    if not session.get('logged_in'): # check whether someone id logged in or not
+        return render_template('login.html') # redirect to login page
     else:
-        return redirect(url_for('admin'))
+        return redirect(url_for('admin')) # redirect to admin page
 
+
+# Login page (login.html)
 @app.route('/login', methods=['POST'])
 def login():
     if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['logged_in'] = True
-        return redirect(url_for('admin'))
+        session['logged_in'] = True # successful login make session active
+        return redirect(url_for('admin')) # redirect to admin route
     else:
-        flash("Username or Password Mismatch!")
-        return redirect(url_for('loginuser'))
+        return redirect(url_for('loginuser')) # redirect to intermediate page/route
 
+
+# Logout route (Logout button on top of the Admin page)
 @app.route("/logout")
 def logout():
-    session['logged_in'] = False
-    return redirect(url_for('loginuser'))
+    session['logged_in'] = False # make session deactive and logout the user
+    return redirect(url_for('loginuser')) # redirect to intermediate page/route
 
+
+# Admin page (admin.html)
 @app.route("/admin")
 def admin():
     return render_template("admin.html", page_title ="Admin",
-    categories = recipe.db.categories.find(), 
-    recipes = recipe.db.recipes.find().sort('recipe_name'),
-    category = recipe.db.categories.find().sort('category_name'),
-    images = recipe.db.images.find().sort('recipe_image'),
-    cuisines = recipe.db.cuisines.find().sort('cuisine_name'),
-    cuisines_list = recipe.db.cuisines.find().sort('cuisine_name'))
+    categories = recipe.db.categories.find(), # Variable to list all Categories in the Database for combo box for adding new recipes 
+    recipes = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Recipes in the Database for Admin page
+    category = recipe.db.categories.find().sort('category_name'), # Variable to list all Categories in the Database for EDIT or DELETE on Admin page
+    images = recipe.db.images.find().sort('recipe_image'), # Variable to list all Images in the Database for combo box for adding new recipes 
+    cuisines = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for combo box for adding new recipes 
+    cuisines_list = recipe.db.cuisines.find().sort('cuisine_name')) # Variable to list all Cuisines in the Database for EDIT or DELETE on Admin page
     
+
+# Insert recipe to Database (admin.html)
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     addrecipes = recipe.db.recipes
     addrecipes.insert_one(request.form.to_dict())
     return redirect(url_for("admin"))
   
+  
+# Insert category to database (admin.html)
 @app.route("/insert_category", methods=["POST"])
 def insert_category():
     addcategory = recipe.db.categories
     addcategory.insert_one(request.form.to_dict())
     return redirect(url_for("admin"))
     
+
+# Insert Cuisine to database (admin.html)
 @app.route("/insert_cuisine", methods=["POST"])
 def insert_cuisine():
     addcuisine = recipe.db.cuisines
     addcuisine.insert_one(request.form.to_dict())
     return redirect(url_for("admin"))
 
+
+# Edit recipe (admin.html)
 @app.route("/edit_recipe/<task_id>")
 def edit_recipe(task_id):
-    the_recipe = recipe.db.recipes.find_one({"_id": ObjectId(task_id)})
-    all_categories = recipe.db.categories.find()
-    all_images = recipe.db.images.find()
-    all_cuisines = recipe.db.cuisines.find().sort('cuisine_name')
-    return render_template("editrecipe.html", page_title="Edit Recipe", recipe = the_recipe, categories = all_categories, images = all_images, cuisines = all_cuisines)
+    the_recipe = recipe.db.recipes.find_one({"_id": ObjectId(task_id)}) # fetch data from database with help of unique ID
+    all_categories = recipe.db.categories.find() # Variable to list all categories in th databse
+    all_images = recipe.db.images.find() # Variable to list all images in th databse
+    all_cuisines = recipe.db.cuisines.find().sort('cuisine_name')  # Variable to list all cuisines in th databse
+    return render_template("editrecipe.html", page_title="Edit Recipe", 
+    recipe = the_recipe, # variable to store all fetched recipes 
+    categories = all_categories,  # variable to store all fetched categories  
+    images = all_images,  # variable to store all fetched images 
+    cuisines = all_cuisines) # variable to store all fetched cuisines 
     
+# Edit Category (admin.html)
 @app.route("/edit_category/<cat_id>")
 def edit_category(cat_id):
     return render_template("editcategory.html", 
     page_title="Edit Category", 
-    category = recipe.db.categories.find_one({'_id': ObjectId(cat_id)}))
+    category = recipe.db.categories.find_one({'_id': ObjectId(cat_id)})) # Variable to fetch and store particular category base on uniquie ID
     
+# Edit Cuisine (admin.html)
 @app.route("/edit_cuisine/<cus_id>")
 def edit_cuisine(cus_id):
     return render_template("editcuisine.html", 
     page_title="Edit Cuisine", 
-    cuisines = recipe.db.cuisines.find_one({'_id': ObjectId(cus_id)}))
-    
+    cuisines = recipe.db.cuisines.find_one({'_id': ObjectId(cus_id)})) # Variable to fetch and store particular cuisine base on uniquie ID
+
+
+# Update recipe (editrecipe.html)
 @app.route("/update_recipe/<task_id>", methods=["POST"])
 def update_recipe(task_id):
     updaterecipe = recipe.db.recipes
-    updaterecipe.update({'_id': ObjectId(task_id)},
+    updaterecipe.update({'_id': ObjectId(task_id)}, # Update data in the database based on uniq ID
     {
-        'recipe_name': request.form.get('recipe_name'),
+        'recipe_name': request.form.get('recipe_name'), # Fetch updated data from input field and store in the right field in the databse
         'recipe_type': request.form.get('recipe_type'),
         'recipe_image': request.form.get('recipe_image'),
         'recipe_cuisine': request.form.get('recipe_cuisine'),
@@ -244,38 +282,49 @@ def update_recipe(task_id):
     return redirect(url_for("admin"))
  
 
+# Update Category (editcategory.html)
 @app.route("/update_category/<cat_id>", methods=["POST"])
 def update_category(cat_id):
     updatecategory = recipe.db.categories
-    updatecategory.update({'_id': ObjectId(cat_id)},
+    updatecategory.update({'_id': ObjectId(cat_id)}, # Update data in the database based on uniq ID
     {
-        'category_name' : request.form.get('category_name')
-    })
-    return redirect(url_for('admin'))
-    
-@app.route("/update_cuisine/<cus_id>", methods=["POST"])
-def update_cuisine(cus_id):
-    updatecuisine = recipe.db.cuisines
-    updatecuisine.update({'_id': ObjectId(cus_id)},
-    {
-        'cuisine_name' : request.form.get('cuisine_name')
+        'category_name' : request.form.get('category_name') # Fetch updates category from input field and store in the right field in the databse
     })
     return redirect(url_for('admin'))
 
+
+# Update Cuisine (editcuisine.html)    
+@app.route("/update_cuisine/<cus_id>", methods=["POST"])
+def update_cuisine(cus_id):
+    updatecuisine = recipe.db.cuisines
+    updatecuisine.update({'_id': ObjectId(cus_id)}, # Update data in the database based on uniq ID
+    {
+        'cuisine_name' : request.form.get('cuisine_name') # Fetch updated cuisine from input field and store in the right field in the databse
+    })
+    return redirect(url_for('admin'))
+
+
+# Delete Recipe (admin.html)
 @app.route('/delete_recipe/<task_id>')
 def delete_recipe(task_id):
-    recipe.db.recipes.remove({'_id': ObjectId(task_id)})
+    recipe.db.recipes.remove({'_id': ObjectId(task_id)}) # Delete perticular recipe from database based on uniq ID
     return redirect(url_for('admin'))
     
+    
+# Delete Category (admin.html)
 @app.route('/delete_category/<cat_id>')
 def delete_category(cat_id):
-    recipe.db.categories.remove({'_id': ObjectId(cat_id)})
+    recipe.db.categories.remove({'_id': ObjectId(cat_id)}) # Delete perticular category from database based on uniq ID
     return redirect(url_for('admin'))
     
+
+# Delete Cuisine (admin.html)
 @app.route('/delete_cuisine/<cus_id>')
 def delete_cuisine(cus_id):
-    recipe.db.cuisines.remove({'_id': ObjectId(cus_id)})
+    recipe.db.cuisines.remove({'_id': ObjectId(cus_id)}) # Delete perticular cuisine from database based on uniq ID
     return redirect(url_for('admin'))
+
+
 
 @app.route("/recipes/<recipe_name>")
 def about_recipe(recipe_name):

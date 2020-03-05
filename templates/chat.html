@@ -4,38 +4,44 @@
     <form method="POST">
         <div class="form-group floating-label-form-group controls">
             <label for="chatname">Username:</label>
+            
+            <!--Inputting Username-->
             <input type="text" class="form-control" placeholder="Username" id="chatname" name="chatname" required data-validation-required-message="Please enter your username.">
         </div>
         <br>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="chatMessageButton">Chat to us</button>
+            <button type="submit" class="btn waves-effect waves-light" id="chatMessageButton">Chat to us</button>
         </div>
     </form>
     <br>
-    <h2> Welcome, {{ username }}</h2>
+    <h4> Welcome, {{ username }}</h4> <!--Username will be added here-->
     
     <form method = "POST">
         <div class="form-group floating-label-form-group controls">
+            
+            <!--Message area for chat-->
             <textarea cols = "50" rows = "2" name = "chatmessage" id = "chatmessage"></textarea>
         </div>
         <br>
         <div class="form-group">
-            <button class="btn btn-primary" id="chatMessageButton">SEND</button>
+            <button class="btn waves-effect waves-light" id="chatMessageButton">SEND</button>
         </div>
     </form>
     
     {% for message in chat_messages %}
-        <p> ({{ message.timestamp }}) {{ message.from }}: {{ message.message }}</p>
+        <p> ({{ message.timestamp }}) {{ message.from }}: {{ message.message }}</p> <!--time stamp will be added on chat along with username and message-->
     {% endfor %}
 
 
     <script>
         let textbox = document.getElementById("chatmessage")
         
+        /* Refresh chat every 40 second to get new inputted message*/
         let timer = setTimeout(function(){
-            location.reload();
+            location.reload(); 
         }, 40000);
         
+        /* Timer will stop till message input in process*/
         textbox.onkeydown = function(e) {
             
             clearTimeout(timer)

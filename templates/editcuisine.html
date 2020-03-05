@@ -4,6 +4,8 @@
     <h2>{{ page_title }}</h2>
     
     <div class="row">
+        
+        <!--To Edit Cuisine through 'update_cuisine/<cus_id> route-->
         <form action="{{ url_for('update_cuisine', cus_id = cuisines._id) }}" method="POST" class="col s12">
             <h5>Cuisine Name:</h5>
             <div class="input-field col s12">
@@ -12,6 +14,7 @@
                 <label for="icon_prefix">Cuisine Name</label>
             </div>
             
+            <!--To choose right Cuisine through provided options-->
             <div class="input-field col s12">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Edit Cuisine
                     <i class="material-icons right">send</i>
