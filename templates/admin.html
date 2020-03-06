@@ -65,7 +65,7 @@
                                         <h5>Choose a Cuisine:</h5>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">photo_filter</i>
-                                            <select id="recipe_type" name="recipe_type">
+                                            <select id="recipe_cuisine" name="recipe_cuisine">
                                                 <option value="" disabled selected>Recipe Type</option>
                                                                 
                                                 {% for cuisine in cuisines %}
@@ -183,12 +183,12 @@
                                         <h5>Provide time (mins):</h5>
                                         <div id="matfix" class="input-field col s12">
                                             <i class="material-icons prefix">access_time</i>
-                                            <input id="prep_time" name="prep_time" type="text" class="validate"  required data-validation-required-message="Please enter preparation time.">
+                                            <input id="prep_time" name="prep_time" type="number" class="validate"  required data-validation-required-message="Please enter preparation time.">
                                             <label for="icon_prefix">Preparation Time</label>
                                         </div>
                                         <div id="matfix" class="input-field col s12">
                                             <i class="material-icons prefix">access_time</i>
-                                            <input id="cook_time" name="cook_time" type="text" class="validate" required data-validation-required-message="Please enter cooking time.">
+                                            <input id="cook_time" name="cook_time" type="number" class="validate" required data-validation-required-message="Please enter cooking time.">
                                             <label for="icon_prefix">Cooking Time</label>
                                         </div>
                                         

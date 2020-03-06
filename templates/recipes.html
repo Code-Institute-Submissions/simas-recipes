@@ -101,6 +101,16 @@
 
     <!--For list of available BEEF RECIPES in materialize drop down format-->
     <h5 id="cat-beef" class="recipe_head">Beef Recipes</h5>
+    
+    {% if check_beef|selectattr('recipe_type', 'equalto', 'Beef')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_beef %}    
     
     {% if recipe.recipe_type == "Beef" %}
@@ -158,9 +168,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available CHICKEN RECIPES in materialize drop down format-->    
     <h5 id="cat-chick" class="recipe_head">Chicken Recipes</h5>
+    
+    {% if check_chick|selectattr('recipe_type', 'equalto', 'Chicken')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_chick %}    
     
     {% if recipe.recipe_type == "Chicken" %}
@@ -218,9 +239,19 @@
         </ul>
     {% endif %}
     {% endfor %}
-
+    {% endif %}
+    
     <!--For list of available HEALTHY RECIPES in materialize drop down format-->
     <h5 id="cat-healthy" class="recipe_head">Healthy Recipes</h5>
+    {% if check_healthy|selectattr('recipe_type', 'equalto', 'Healthy')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_healthy %}    
     
     {% if recipe.recipe_type == "Healthy" %}
@@ -277,9 +308,19 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available LAMB RECIPES in materialize drop down format-->
     <h5 id="cat-lamb" class="recipe_head">Lamb Recipes</h5>
+    {% if check_lamb|selectattr('recipe_type', 'equalto', 'Lamb')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_lamb %}    
     
     {% if recipe.recipe_type == "Lamb" %}
@@ -337,9 +378,19 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available PORK RECIPES in materialize drop down format-->
     <h5 id="cat-pork" class="recipe_head">Pork Recipes</h5>
+    {% if check_pork|selectattr('recipe_type', 'equalto', 'Pork')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_pork %}    
     
     {% if recipe.recipe_type == "Pork" %}
@@ -397,9 +448,19 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available SEA FOOD RECIPES in materialize drop down format-->
     <h5 id="cat-seafood" class="recipe_head">Sea Food Recipes</h5>
+    {% if check_seafood|selectattr('recipe_type', 'equalto', 'Sea Food')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_seafood %}    
     
     {% if recipe.recipe_type == "Sea Food" %}
@@ -457,9 +518,19 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available VEGAN RECIPES in materialize drop down format-->
     <h5 id="cat-vegan" class="recipe_head">Vegan Recipes</h5>
+    {% if check_vegan|selectattr('recipe_type', 'equalto', 'Vegan')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_vegan %}    
     
     {% if recipe.recipe_type == "Vegan" %}
@@ -517,9 +588,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available VEGETABLE RECIPES in materialize drop down format-->
     <h5 id="cat-veg" class="recipe_head">Vegetable Recipes</h5>
+    
+    {% if check_veg|selectattr('recipe_type', 'equalto', 'Vegetable')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_veg %}    
     
     {% if recipe.recipe_type == "Vegetable" %}
@@ -577,10 +659,13 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     <br>
 
     <!--For list of available AMERICAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-amc" class="recipe_head">American Cuisine</h5>
+    
+    {% if check_amc|selectattr('recipe_cuisine', 'equalto', 'American Cuisine')|list|length <= 0 %}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -588,6 +673,7 @@
             </div>
         </li>
     </ul>
+    {% else %}
     {% for recipe in recipes_amc %}    
     
     {% if recipe.recipe_cuisine == "American Cuisine" %}
@@ -645,9 +731,12 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     
     <!--For list of available AUSTRALIAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-auc" class="recipe_head">Australian Cuisine</h5>
+    
+    {% if check_auc|selectattr('recipe_cuisine', 'equalto', 'Australian Cuisine')|list|length <= 0 %}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -655,6 +744,7 @@
             </div>
         </li>
     </ul>
+    {% else %}
     {% for recipe in recipes_auc %}    
     
     {% if recipe.recipe_cuisine == "Australian Cuisine" %}
@@ -712,9 +802,12 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     
     <!--For list of available CANADIAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-cnd" class="recipe_head">Canadian Cuisine</h5>
+    
+    {% if check_cdc|selectattr('recipe_cuisine', 'equalto', 'Canadian Cuisine')|list|length <= 0 %}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -722,6 +815,7 @@
             </div>
         </li>
     </ul>
+    {% else %}
     {% for recipe in recipes_cdc %}    
     
     {% if recipe.recipe_cuisine == "Canadian Cuisine" %}
@@ -779,9 +873,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available CHINESE CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-cnc" class="recipe_head">Chinese Cuisine</h5>
+    
+    {% if check_cnc|selectattr('recipe_cuisine', 'equalto', 'Chinese Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_cnc %}    
     
     {% if recipe.recipe_cuisine == "Chinese Cuisine" %}
@@ -839,9 +944,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available EUROPEAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-eur" class="recipe_head">European Cuisine</h5>
+    
+    {% if check_euc|selectattr('recipe_cuisine', 'equalto', 'European Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_euc %}    
     
     {% if recipe.recipe_cuisine == "European Cuisine" %}
@@ -899,9 +1015,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available FAR EASTERN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-fre" class="recipe_head">Far Eastern Cuisine</h5>
+    
+    {% if check_fec|selectattr('recipe_cuisine', 'equalto', 'Far Eastern Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_fec %}    
     
     {% if recipe.recipe_cuisine == "Far Eastern Cuisine" %}
@@ -959,9 +1086,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available MEDITERRANEAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-mdt" class="recipe_head">Mediterranean Cuisine</h5>
+    
+    {% if check_mdc|selectattr('recipe_cuisine', 'equalto', 'Mediterranean Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_mdc %}    
     
     {% if recipe.recipe_cuisine == "Mediterranean Cuisine" %}
@@ -1019,9 +1157,21 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     
     <!--For list of available MIDDLE EASTERN CUISINE RECIPES in materialize drop down format-->    
     <h5 id="cus-mde" class="recipe_head">Middle Eastern Cuisine</h5>
+    
+    {% if check_mec|selectattr('recipe_cuisine', 'equalto', 'Middle Eastern Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
+    
     {% for recipe in recipes_mec %}    
     
     {% if recipe.recipe_cuisine == "Middle Eastern Cuisine" %}
@@ -1079,9 +1229,12 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     
     <!--For list of available NORTH AFRICAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-naf" class="recipe_head">North African Cuisine</h5>
+    
+    {% if check_nac|selectattr('recipe_cuisine', 'equalto', 'North African Cuisine')|list|length <= 0 %}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -1089,6 +1242,7 @@
             </div>
         </li>
     </ul>
+    {% else %}
     {% for recipe in recipes_nac %}    
     
     {% if recipe.recipe_cuisine == "North African Cuisine" %}
@@ -1146,9 +1300,12 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available SOUTH AFRICAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-saf" class="recipe_head">South African Cuisine</h5>
+    
+    {% if check_safc|selectattr('recipe_cuisine', 'equalto', 'South African Cuisine')|list|length <= 0 %}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -1156,6 +1313,7 @@
             </div>
         </li>
     </ul>
+    {% else %}
     {% for recipe in recipes_safc %}    
     
     {% if recipe.recipe_cuisine == "South African Cuisine" %}
@@ -1214,9 +1372,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available SOUTH AMERICAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-sam" class="recipe_head">South American Cuisine</h5>
+    
+    {% if check_samc|selectattr('recipe_cuisine', 'equalto', 'South American Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_samc %}    
     
     {% if recipe.recipe_cuisine == "South American Cuisine" %}
@@ -1274,9 +1443,20 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
 
     <!--For list of available SOUTH ASIAN CUISINE RECIPES in materialize drop down format-->
     <h5 id="cus-sas" class="recipe_head">South Asian Cuisine</h5>
+    
+    {% if check_sasc|selectattr('recipe_cuisine', 'equalto', 'South Asian Cuisine')|list|length <= 0 %}
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    {% else %}
     {% for recipe in recipes_sasc %}    
     
     {% if recipe.recipe_cuisine == "South Asian Cuisine" %}
@@ -1334,6 +1514,7 @@
         </ul>
     {% endif %}
     {% endfor %}
+    {% endif %}
     
     <!--for Little red floating button on right hand bottom corner-->
     <div class="fixed-action-btn">

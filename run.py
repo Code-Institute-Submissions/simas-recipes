@@ -90,6 +90,7 @@ def simasrecipe_project():
 # Recipes page (recipes.html)    
 @app.route("/recipes")
 def recipes():
+    
     return render_template("recipes.html", 
     page_title="Recipes", 
     recipes_veg = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Vegetable Recipes in database
@@ -111,7 +112,27 @@ def recipes():
     recipes_nac = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all North African Cuisine Recipes in database
     recipes_safc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South African Cuisine Recipes in database
     recipes_samc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South American Cuisine Recipes in database
-    recipes_sasc = recipe.db.recipes.find().sort('recipe_name')) # Variable to list all South Asian Cuisine Recipes in database
+    recipes_sasc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South Asian Cuisine Recipes in database
+    check_veg = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Vegetable Recipes in database
+    check_chick = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Chicken Recipes in database
+    check_lamb = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Lamb Recipes in database
+    check_seafood = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Sea Food Recipes in database
+    check_beef = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Beef Recipes in database
+    check_healthy = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Healthy Recipes in database
+    check_vegan = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Vegan Recipes in database
+    check_pork = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Pork Recipes in database
+    check_amc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all American Cuisine Recipes in database
+    check_auc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Australian Cuisine Recipes in database
+    check_cdc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Canadian Cuisine Recipes in database
+    check_cnc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Chinese Cuisine Recipes in database
+    check_euc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all European Cuisine Recipes in database
+    check_fec = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Far Eastern Cuisine Recipes in database
+    check_mdc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Mediterranean Cuisine Recipes in database
+    check_mec = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Middle Eastern Cuisine Recipes in database
+    check_nac = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all North African Cuisine Recipes in database
+    check_safc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South African Cuisine Recipes in database
+    check_samc = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all South American Cuisine Recipes in database
+    check_sasc = recipe.db.recipes.find().sort('recipe_name')) # Variable to list all South Asian Cuisine Recipes in database
 
 
 # Contact Us page (contact.html)
@@ -356,6 +377,183 @@ def delete_category(cat_id):
 def delete_cuisine(cus_id):
     recipe.db.cuisines.remove({'_id': ObjectId(cus_id)}) # Delete perticular cuisine from database based on uniq ID
     return redirect(url_for('admin'))
+
+
+@app.route('/beef')
+def beef():
+    return render_template("beef.html",
+    page_title = 'Beef Recipes', 
+    beef_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    beef_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/chicken')
+def chicken():
+    return render_template("chicken.html",
+    page_title = 'Chicken Recipes', 
+    chick_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    chick_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+
+@app.route('/healthy')
+def healthy():
+    return render_template("healthy.html",
+    page_title = 'Healthy Recipes', 
+    healthy_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    healthy_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+
+@app.route('/lamb')
+def lamb():
+    return render_template("lamb.html",
+    page_title = 'Lamb Recipes', 
+    lamb_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    lamb_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/pork')
+def pork():
+    return render_template("pork.html",
+    page_title = 'Pork Recipes', 
+    pork_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    pork_check = recipe.db.recipes.find().sort('recipe_name'))    
+
+
+@app.route('/seafood')
+def seafood():
+    return render_template("seafood.html",
+    page_title = 'Sea Food Recipes', 
+    seafood_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    seafood_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/vegan')
+def vegan():
+    return render_template("vegan.html",
+    page_title = 'Vegan Recipes', 
+    vegan_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    vegan_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/veg')
+def veg():
+    return render_template("veg.html",
+    page_title = 'Vegetable Recipes', 
+    veg_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    veg_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+
+@app.route('/u30')
+def u30():
+    return render_template("u30.html",
+    page_title = 'Recipes Under 30 Mins', 
+    u30_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    u30_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/o30')
+def o30():
+    return render_template("o30.html",
+    page_title = 'Over 30 Mins to Cook', 
+    o30_recipe = recipe.db.recipes.find().sort('recipe_name'),
+    o30_check = recipe.db.recipes.find().sort('recipe_name'))    
+    
+    
+
+@app.route('/american')
+def american():
+    return render_template("american.html",
+    page_title = 'American Cuisines',
+    amc_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    amc_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+    
+@app.route('/australian')
+def australian():
+    return render_template("australian.html",
+    page_title = 'Australian Cuisines',
+    aus_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    aus_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+    
+@app.route('/canadian')
+def canadian():
+    return render_template("canadian.html",
+    page_title = 'Canadian Cuisines',
+    cnd_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    cnd_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+    
+@app.route('/chinese')
+def chinese():
+    return render_template("chinese.html",
+    page_title = 'Chinese Cuisines',
+    cnc_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    cnc_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+    
+@app.route('/european')
+def european():
+    return render_template("european.html",
+    page_title = 'European Cuisines',
+    eur_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    eur_check = recipe.db.recipes.find().sort('recipe_name'))
+    
+
+@app.route('/fareastern')
+def fareastern():
+    return render_template("fareastern.html",
+    page_title = 'Far Eastern Cuisines',
+    fre_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    fre_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/mediterranean')
+def mediterranean():
+    return render_template("mediterranean.html",
+    page_title = 'Mediterranean Cuisines',
+    mdt_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    mdt_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/middleeastern')
+def middleeastern():
+    return render_template("middleeastern.html",
+    page_title = 'Middle Eastern Cuisines',
+    mde_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    mde_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/northafrican')
+def northafrican():
+    return render_template("northafrican.html",
+    page_title = 'North African Cuisines',
+    naf_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    naf_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/southafrican')
+def southafrican():
+    return render_template("southafrican.html",
+    page_title = 'South African Cuisines',
+    saf_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    saf_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/southamerican')
+def southamerican():
+    return render_template("southamerican.html",
+    page_title = 'South American Cuisines',
+    sam_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    sam_check = recipe.db.recipes.find().sort('recipe_name'))
+
+
+@app.route('/southasian')
+def southasian():
+    return render_template("southasian.html",
+    page_title = 'South Asian Cuisines',
+    sas_cuisine = recipe.db.recipes.find().sort('recipe_name'),
+    sas_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
 

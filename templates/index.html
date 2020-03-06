@@ -6,7 +6,7 @@
         
         <!--Amount of recipes available for CHICKEN-->
         <div class="col-md-6 col-sm-12">
-            <a href = "recipes.html/cat-chick">
+            <a href = "{{ url_for('chicken')}}">
             <div class="row card-chick collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Chicken
@@ -19,8 +19,8 @@
         </div>
         
         <!--Amount of recipes available for LAMB-->
-        <div class="col-md-6 col-sm-12" title="Available 'LAMB' Recipes">
-            <a href = "{{ url_for('recipes')}}">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('lamb')}}">
             <div class="row card-lamb collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Lamb
@@ -36,7 +36,8 @@
     <div class="row">
         
         <!--Amount of recipes available for SEA FOOD-->
-        <div class="col-md-6 col-sm-12" title="Available 'SEA FOOD' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('seafood')}}">
             <div class="row card-seafood collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Sea Food
@@ -45,10 +46,12 @@
                     {{ recipe_seafood|selectattr('recipe_type', 'equalto', 'Sea Food')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for VEGETABLE-->
-        <div class="col-md-6 col-sm-12" title="Available 'VEGETABLE' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('veg')}}">
             <div class="row card-veg collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Vegetable
@@ -63,7 +66,8 @@
     <div class="row">
         
         <!--Amount of recipes available for BEEF-->
-        <div class="col-md-6 col-sm-12" title="Available 'BEEF' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('beef')}}">
             <div class="row card-beef collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Beef
@@ -72,10 +76,12 @@
                     {{ recipe_beef|selectattr('recipe_type', 'equalto', 'Beef')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for HEALTHY-->
-        <div class="col-md-6 col-sm-12" title="Available 'HEALTHY' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('healthy')}}">
             <div class="row card-healthy collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Healthy
@@ -84,13 +90,15 @@
                     {{ recipe_healthy|selectattr('recipe_type', 'equalto', 'Healthy')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
     <div class="row">
         
         <!--Amount of recipes available for VEGAN-->
-        <div class="col-md-6 col-sm-12" title="Available 'VEGAN' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('vegan')}}">
             <div class="row card-vegan collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Vegan
@@ -99,10 +107,12 @@
                     {{ recipe_vegan|selectattr('recipe_type', 'equalto', 'Vegan')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for PORK-->
-        <div class="col-md-6 col-sm-12" title="Available 'PORK' Recipes">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('pork')}}">
             <div class="row card-pork collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Pork
@@ -111,6 +121,7 @@
                     {{ recipe_pork|selectattr('recipe_type', 'equalto', 'Pork')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     <br>
@@ -120,27 +131,31 @@
     <div class="row">
         
         <!--Amount of recipes available which can be ready under 30 mins-->
-        <div class="col-md-6 col-sm-12" title="Recipes can be ready 'UNDER 30 MINS'">
+        <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('u30')}}">
             <div class="row card-u30 collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     < 30 mins
                 </h2>
                 <h2 class="col-3 cat-value">
-                    {{ recipe_25|selectattr('cook_time', 'lessthan', '31')|list|length }}
+                    {{ recipe_25|selectattr('cook_time', 'lessthan', 31)|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available which can be take over 30 mins to be ready-->
         <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('o30')}}">
             <div class="row card-o30 collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     > 30 mins
                 </h2>
                 <h2 class="col-3 cat-value">
-                    {{ recipe_35|selectattr('cook_time', 'greaterthan', '31')|list|length }}
+                    {{ recipe_35|selectattr('cook_time', 'greaterthan', 31)|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -152,6 +167,7 @@
         
         <!--Amount of recipes available for AMERICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('american') }}">
             <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     American
@@ -160,10 +176,12 @@
                     {{ recipe_amc|selectattr('recipe_cuisine', 'equalto', 'American Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for AUSTRALIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href = "{{ url_for('australian')}}">
             <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Australian
@@ -172,6 +190,7 @@
                     {{ recipe_auc|selectattr('recipe_cuisine', 'equalto', 'Australian Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -179,6 +198,7 @@
         
         <!--Amount of recipes available for CANADIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('canadian') }}">
             <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Canadian
@@ -187,10 +207,12 @@
                     {{ recipe_cdc|selectattr('recipe_cuisine', 'equalto', 'Canadian Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for CHINESE CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('chinese') }}">
             <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Chinese
@@ -199,6 +221,7 @@
                     {{ recipe_cnc|selectattr('recipe_cuisine', 'equalto', 'Chinese Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -206,6 +229,7 @@
         
         <!--Amount of recipes available for EUROPIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('european') }}">
             <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     European
@@ -214,10 +238,12 @@
                     {{ recipe_euc|selectattr('recipe_cuisine', 'equalto', 'European Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for FAR EASTERN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('fareastern') }}">
             <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Far Eastern
@@ -226,6 +252,7 @@
                     {{ recipe_fec|selectattr('recipe_cuisine', 'equalto', 'Far Eastern Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -233,6 +260,7 @@
         
         <!--Amount of recipes available for MEDITERRANEAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('mediterranean') }}">
             <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Mediterranean
@@ -241,18 +269,21 @@
                     {{ recipe_mdc|selectattr('recipe_cuisine', 'equalto', 'Mediterranean Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for MIDDLE EASTERN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('middleeastern') }}">
             <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
-                    Middle Eastern
+                    Mdl Eastern
                 </h2>
                 <h2 class="col-3 cat-value">
                     {{ recipe_mec|selectattr('recipe_cuisine', 'equalto', 'Middle Eastern Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -260,6 +291,7 @@
         
         <!--Amount of recipes available for NORTH AFRICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('northafrican') }}">
             <div class="row card-cuisine-red collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     N. African
@@ -268,10 +300,12 @@
                     {{ recipe_nac|selectattr('recipe_cuisine', 'equalto', 'North African Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for SOUTH AFRICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('southafrican') }}">
             <div class="row card-cuisine-purple collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     S. African
@@ -280,6 +314,7 @@
                     {{ recipe_safc|selectattr('recipe_cuisine', 'equalto', 'South African Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
@@ -287,6 +322,7 @@
         
         <!--Amount of recipes available for SOUTH AMERICAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('southamerican') }}">
             <div class="row card-cuisine-blue collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     S. American
@@ -295,10 +331,12 @@
                     {{ recipe_samc|selectattr('recipe_cuisine', 'equalto', 'South American Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for SOUTH ASIAN CUISINE-->
         <div class="col-md-6 col-sm-12">
+            <a href="{{ url_for('southasian') }}">
             <div class="row card-cuisine-green collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     S. Asian
@@ -307,6 +345,7 @@
                     {{ recipe_sasc|selectattr('recipe_cuisine', 'equalto', 'South Asian Cuisine')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     

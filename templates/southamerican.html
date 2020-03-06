@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+
+
+    <div>
+        <a href="{{ url_for('index') }}"><i class="fas fa-arrow-alt-circle-left"></i> Dashboard</a>
+            <i class="fas fa-grip-lines-vertical"></i>
+        <a href="{{ url_for('recipes') }}">Recipes <i class="fas fa-arrow-alt-circle-right"></i></a>
+    </div><br>
+    <h5 class="recipe_head">{{ page_title}}</h5>
+    
+    {% if sam_check|selectattr('recipe_cuisine', 'equalto', 'South American Cuisine')|list|length <= 0 %}
+    
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <span class="not-available">Will be available soon</span>
+            </div>
+        </li>
+    </ul>
+    
+    {% else %}
+    {% for recipe in sam_cuisine %}    
+    
+    {% if recipe.recipe_cuisine == "South American Cuisine" %}
+        
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">outdoor_grill</i> {{recipe.recipe_name}}
+                </div>
+                
+                <div class="collapsible-body cat-beef">
+                    <div class="row featurette">
+                        <div class="col-md-7">
+                                <h5>Cuisine:</h5>
+                                <p>
+                                    <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>
+                                </p><br>
+                                <h5>Ingredient:</h5>
+                                <p>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_1}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_2}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_3}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_4}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_5}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_6}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_7}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_8}}<br>
+                                    <i class="fas fa-angle-double-right"></i> {{recipe.ingredient_9}}<br>
+                                </p><br>
+                                <h5>Method:</h5>
+                                <p>
+                                    <i class="fas fa-check"></i> {{recipe.method_1}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_2}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_3}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_4}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_5}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_6}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_7}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_8}}<br>
+                                    <i class="fas fa-check"></i> {{recipe.method_9}}<br>
+                                </p><br>
+                                <p>
+                                    <h5>Date of Creation:</h5> {{ recipe.create_on }}</p><br>
+                                <p>
+                                    <h5>Time for Preparation:</h5> {{ recipe.prep_time }}</p><br>
+                                <p>
+                                    <h5>Time for Cooking:</h5> {{ recipe.cook_time }}</p><br>
+                            </div>
+                        <div class="col-md-5">
+                                <img class="featurette-image img-fluid" src="{{ recipe.recipe_image }}">
+                            </div><br> 
+                    </div>
+                </div>
+            </li>
+        </ul>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    
+{% endblock %}
