@@ -201,8 +201,10 @@ def login():
     login_user = users.find_one({'name' : request.form['username']})
     
     if login_user:
+        session['username'] = request.form['username']
         if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form['username']
+            session['logged_in'] = True
             return redirect(url_for('admin'))        
         return redirect(url_for('admin'))
     return 'Invalid username/password combination'
@@ -220,7 +222,6 @@ def logout():
 def admin():
     
     if 'username' in session:
-        
         return render_template("admin.html", page_title ="Admin",
         categories = recipe.db.categories.find(), # Variable to list all Categories in the Database for combo box for adding new recipes 
         recipes = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Recipes in the Database for Admin page
@@ -229,6 +230,8 @@ def admin():
         cuisines = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for combo box for adding new recipes 
         cuisines_list = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for EDIT or DELETE on Admin page
         username = session["username"])
+    
+    return render_template('login.html')
     
     
 # Insert user to database (admin.html)
