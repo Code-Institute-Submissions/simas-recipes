@@ -138,7 +138,7 @@
                     < 30 mins
                 </h2>
                 <h2 class="col-3 cat-value">
-                    {{ recipe_25|selectattr('cook_time', 'lessthan', 31)|list|length }}
+                    {{ recipe_25|selectattr('cook_time', 'lessthan', '31')|list|length }}
                 </h2>
             </div>
             </a>
@@ -152,7 +152,7 @@
                     > 30 mins
                 </h2>
                 <h2 class="col-3 cat-value">
-                    {{ recipe_35|selectattr('cook_time', 'greaterthan', 31)|list|length }}
+                    {{ recipe_35|selectattr('cook_time', 'greaterthan', '31')|list|length }}
                 </h2>
             </div>
             </a>

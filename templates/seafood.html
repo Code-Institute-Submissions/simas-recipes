@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-
+    <!--List of Sea Food Category (route seafood)-->
     <div>
         <a href="{{ url_for('index') }}"><i class="fas fa-arrow-alt-circle-left"></i> Dashboard</a>
             <i class="fas fa-grip-lines-vertical"></i>
@@ -8,19 +8,26 @@
     </div><br>
     <h5 class="recipe_head">{{ page_title }}</h5>
     
+    <!--To Check if there is any recipes available under perticular Category-->
     {% if seafood_check|selectattr('recipe_type', 'equalto', 'Sea Food')|list|length <= 0 %}
     
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
+                
+                <!--IF there isn't any, this message will be displayed-->
                 <span class="not-available">Will be available soon</span>
             </div>
         </li>
     </ul>
     
+    <!--If there is any recipes available than it will displayed-->
     {% else %}
+    
+    <!--Loop to display all recipes-->
     {% for recipe in seafood_recipe %}    
     
+    <!--To check either, is there any perticular Category-->
     {% if recipe.recipe_type == "Sea Food" %}
         
         <ul class="collapsible">
@@ -32,6 +39,10 @@
                 <div class="collapsible-body cat-beef">
                     <div class="row featurette">
                         <div class="col-md-7">
+                                <h5>Type:</h5>
+                                <p>
+                                    <i class="fas fa-fire"></i> {{recipe.recipe_type}}<br>
+                                </p><br>
                                 <h5>Cuisine:</h5>
                                 <p>
                                     <i class="fab fa-free-code-camp"></i> {{recipe.recipe_cuisine}}<br>

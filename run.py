@@ -382,6 +382,7 @@ def delete_cuisine(cus_id):
     return redirect(url_for('admin'))
 
 
+# Beef Recipe View (beef.html)
 @app.route('/beef')
 def beef():
     return render_template("beef.html",
@@ -390,6 +391,7 @@ def beef():
     beef_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Chicken Recipe View (chicken.html)
 @app.route('/chicken')
 def chicken():
     return render_template("chicken.html",
@@ -398,6 +400,7 @@ def chicken():
     chick_check = recipe.db.recipes.find().sort('recipe_name'))
     
 
+# Healthy Recipe View (healthy.html)
 @app.route('/healthy')
 def healthy():
     return render_template("healthy.html",
@@ -406,6 +409,7 @@ def healthy():
     healthy_check = recipe.db.recipes.find().sort('recipe_name'))
     
 
+# Lamb Recipe View (lamb.html)
 @app.route('/lamb')
 def lamb():
     return render_template("lamb.html",
@@ -414,6 +418,7 @@ def lamb():
     lamb_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Pork Recipe View (pork.html)
 @app.route('/pork')
 def pork():
     return render_template("pork.html",
@@ -422,6 +427,8 @@ def pork():
     pork_check = recipe.db.recipes.find().sort('recipe_name'))    
 
 
+
+# Sea Food Recipe View (seafood.html)
 @app.route('/seafood')
 def seafood():
     return render_template("seafood.html",
@@ -430,6 +437,7 @@ def seafood():
     seafood_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Vegan Recipe View (vegan.html)
 @app.route('/vegan')
 def vegan():
     return render_template("vegan.html",
@@ -438,6 +446,7 @@ def vegan():
     vegan_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Vegetable Recipe View (veg.html)
 @app.route('/veg')
 def veg():
     return render_template("veg.html",
@@ -446,23 +455,25 @@ def veg():
     veg_check = recipe.db.recipes.find().sort('recipe_name'))
     
 
+# Under 30 mins Recipe View (u30.html)
 @app.route('/u30')
 def u30():
     return render_template("u30.html",
-    page_title = 'Recipes Under 30 Mins', 
+    page_title = 'Recipes Under 30 Mins to Cook', 
     u30_recipe = recipe.db.recipes.find().sort('recipe_name'),
     u30_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Over 30 mins Recipe View (o30.html)
 @app.route('/o30')
 def o30():
     return render_template("o30.html",
-    page_title = 'Over 30 Mins to Cook', 
+    page_title = 'Recipes Over 30 Mins to Cook', 
     o30_recipe = recipe.db.recipes.find().sort('recipe_name'),
     o30_check = recipe.db.recipes.find().sort('recipe_name'))    
-    
-    
 
+    
+# American Cuisine View (american.html)
 @app.route('/american')
 def american():
     return render_template("american.html",
@@ -470,7 +481,8 @@ def american():
     amc_cuisine = recipe.db.recipes.find().sort('recipe_name'),
     amc_check = recipe.db.recipes.find().sort('recipe_name'))
     
-    
+
+# Australian Cuisine View (australian.html)    
 @app.route('/australian')
 def australian():
     return render_template("australian.html",
@@ -478,7 +490,8 @@ def australian():
     aus_cuisine = recipe.db.recipes.find().sort('recipe_name'),
     aus_check = recipe.db.recipes.find().sort('recipe_name'))
     
-    
+
+# Canadian Cuisine View (canadian.html)    
 @app.route('/canadian')
 def canadian():
     return render_template("canadian.html",
@@ -487,6 +500,7 @@ def canadian():
     cnd_check = recipe.db.recipes.find().sort('recipe_name'))
     
     
+# Chinese Cuisine View (chinese.html)    
 @app.route('/chinese')
 def chinese():
     return render_template("chinese.html",
@@ -495,6 +509,7 @@ def chinese():
     cnc_check = recipe.db.recipes.find().sort('recipe_name'))
     
     
+# European Cuisine View (earopean.html)
 @app.route('/european')
 def european():
     return render_template("european.html",
@@ -503,6 +518,7 @@ def european():
     eur_check = recipe.db.recipes.find().sort('recipe_name'))
     
 
+# Far Eastern Cuisine View (fareastern.html)
 @app.route('/fareastern')
 def fareastern():
     return render_template("fareastern.html",
@@ -511,6 +527,7 @@ def fareastern():
     fre_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Mediterranean Cuisine View (mediterranean.html)
 @app.route('/mediterranean')
 def mediterranean():
     return render_template("mediterranean.html",
@@ -519,6 +536,7 @@ def mediterranean():
     mdt_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# Middel Eastern Cuisine View (middleeastern.html)
 @app.route('/middleeastern')
 def middleeastern():
     return render_template("middleeastern.html",
@@ -527,6 +545,7 @@ def middleeastern():
     mde_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# North African Cuisine View (northafrican.html)
 @app.route('/northafrican')
 def northafrican():
     return render_template("northafrican.html",
@@ -535,6 +554,7 @@ def northafrican():
     naf_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# South African Cuisine View (southafrican.html)
 @app.route('/southafrican')
 def southafrican():
     return render_template("southafrican.html",
@@ -543,6 +563,7 @@ def southafrican():
     saf_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# South American Cuisine View (southamerican.html)
 @app.route('/southamerican')
 def southamerican():
     return render_template("southamerican.html",
@@ -551,6 +572,7 @@ def southamerican():
     sam_check = recipe.db.recipes.find().sort('recipe_name'))
 
 
+# South Asian Cuisine View (southasian.html)
 @app.route('/southasian')
 def southasian():
     return render_template("southasian.html",
