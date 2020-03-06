@@ -3,7 +3,7 @@ import json
 import pymysql
 import pymongo
 from datetime import datetime
-from flask import Flask, render_template, request, flash, redirect, request, session, url_for, abort
+from flask import Flask, render_template, request, flash, redirect, session, url_for, abort
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -11,6 +11,8 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 import re
+import bcrypt
+
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET", "recipechat")
@@ -25,8 +27,8 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 recipe = PyMongo(app)
 
 
-# MongoDB connection check
 def mongo_connect(url):
+    """MongoDB connection"""
     try:
         conn = pymongo.MongoClient(url)
         #print("Mongo is Connected!")
@@ -156,6 +158,11 @@ def user(username):
     return render_template("chat.html", username = username, chat_messages = messages)
 
 
+@app.route('/newuser')
+def newuser():
+    return render_template('newuser.html')
+
+
 # Intermediate page between Login and admin
 @app.route('/loginuser')
 def loginuser():
@@ -169,11 +176,15 @@ def loginuser():
 # Login page (login.html)
 @app.route('/login', methods=['POST'])
 def login():
-    if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['logged_in'] = True # successful login make session active
-        return redirect(url_for('admin')) # redirect to admin route
-    else:
-        return redirect(url_for('loginuser')) # redirect to intermediate page/route
+    users = recipe.db.users
+    login_user = users.find_one({'name' : request.form['username']})
+    
+    if login_user:
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form['username']
+            return redirect(url_for('admin'))        
+        return redirect(url_for('admin'))
+    return 'Invalid username/password combination'
 
 
 # Logout route (Logout button on top of the Admin page)
@@ -186,14 +197,36 @@ def logout():
 # Admin page (admin.html)
 @app.route("/admin")
 def admin():
-    return render_template("admin.html", page_title ="Admin",
-    categories = recipe.db.categories.find(), # Variable to list all Categories in the Database for combo box for adding new recipes 
-    recipes = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Recipes in the Database for Admin page
-    category = recipe.db.categories.find().sort('category_name'), # Variable to list all Categories in the Database for EDIT or DELETE on Admin page
-    images = recipe.db.images.find().sort('recipe_image'), # Variable to list all Images in the Database for combo box for adding new recipes 
-    cuisines = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for combo box for adding new recipes 
-    cuisines_list = recipe.db.cuisines.find().sort('cuisine_name')) # Variable to list all Cuisines in the Database for EDIT or DELETE on Admin page
     
+    if 'username' in session:
+        
+        return render_template("admin.html", page_title ="Admin",
+        categories = recipe.db.categories.find(), # Variable to list all Categories in the Database for combo box for adding new recipes 
+        recipes = recipe.db.recipes.find().sort('recipe_name'), # Variable to list all Recipes in the Database for Admin page
+        category = recipe.db.categories.find().sort('category_name'), # Variable to list all Categories in the Database for EDIT or DELETE on Admin page
+        images = recipe.db.images.find().sort('recipe_image'), # Variable to list all Images in the Database for combo box for adding new recipes 
+        cuisines = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for combo box for adding new recipes 
+        cuisines_list = recipe.db.cuisines.find().sort('cuisine_name'), # Variable to list all Cuisines in the Database for EDIT or DELETE on Admin page
+        username = session["username"])
+    
+    
+# Insert user to database (admin.html)
+@app.route("/insert_user", methods=["POST","GET"])
+def insert_user():
+    if request.method == 'POST':
+        users = recipe.db.users
+        existing_user = users.find_one({'name' : request.form['username']})
+        
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for("admin"))
+        
+        return 'Username Already Exists'
+    
+    return render_template('newuser.html')
+
 
 # Insert recipe to Database (admin.html)
 @app.route("/insert_recipe", methods=["POST"])

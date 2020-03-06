@@ -6,6 +6,7 @@
         
         <!--Amount of recipes available for CHICKEN-->
         <div class="col-md-6 col-sm-12">
+            <a href = "recipes.html/cat-chick">
             <div class="row card-chick collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Chicken
@@ -14,10 +15,12 @@
                     {{ recipe_chicken|selectattr('recipe_type', 'equalto', 'Chicken')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
         
         <!--Amount of recipes available for LAMB-->
         <div class="col-md-6 col-sm-12" title="Available 'LAMB' Recipes">
+            <a href = "{{ url_for('recipes')}}">
             <div class="row card-lamb collapsible collapsible-dash">
                 <h2 class="col-9 cat_head">
                     Lamb
@@ -26,6 +29,7 @@
                     {{ recipe_lamb|selectattr('recipe_type', 'equalto', 'Lamb')|list|length }}
                 </h2>
             </div>
+            </a>
         </div>
     </div>
     
