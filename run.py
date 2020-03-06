@@ -219,7 +219,7 @@ def insert_user():
         
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            users.insert({'name' : request.form['username'], 'email' : request.form['useremail'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect(url_for("admin"))
         
