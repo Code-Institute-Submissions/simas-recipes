@@ -43,7 +43,7 @@ Let's say, If I have manage to get 3 different recipes for Lamb with all Ingredi
 
 This will begin with clicking or taping on Admin option from Menu which will bring you to Login page, where you can either use existing username and password or creat new user.
 
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/LoginPage.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/LoginPage.JPG
 
 Once you are Logged in, you will be presented with Admin page with your username displayed on top with option to Add, Delete or Update Recipe, Category or Cuisine. By clicking on Add New Recipe heading it will display form where you can add all required detail and press Add Recipe at bottom will add new recipe to database.
 
@@ -51,22 +51,22 @@ Once you are Logged in, you will be presented with Admin page with your username
 https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Admin_page.png
 
 #### Desktop View
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/LoggedIn.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/LoggedIn.JPG
 
 ### How can I edit Recipe?
 
 Edit recipe can be done on Admin page. Which work almost similar way as Add New Recipe by Logging in. Once user logged in they can scroll down to List of Recipes, once user get to the list, user can cllick on recipe name which they like to Edit, which will collapse whole recipe with Edit and Delete button on top. Click on Edit button which will bring Edit page with all recipes data, where user can make amendment. Once amendment is done they can simply click on Edit Recipe button which they can check on same admin page by visiting same recipe again.
 
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/EditRecipe.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/EditRecipe.JPG
 
 ### How can I Edit Category or Cuisine?
 
 All Editing can be done on Admin page. Once user logged in they can scroll down to either list of categories or List of Cuisins at towards bottom of the page. Same as Edit recipe, user can click/tap on category or cuisine list which will bring list with Edit and Delete button displayed before each category and cuisine. By clicking Edit button user make amendement.
 #### Edit Delete Category
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/EditDeleteCategory.gif
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/EditDeleteCategory.gif
 
 #### Edit Delete Cuisine
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/EditDeleteCuisine.gif
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/EditDeleteCuisine.gif
 
 ### How Dashboard works?
 
@@ -74,7 +74,7 @@ Dashboard is overview of all the recipes and categories added so far. Dashboard 
 
 For Example, if user only interested in Chicken recipes, they can tap on chicken card which will present them with list of all Chicken recipes we have. If user only interested in recipes which can be ready in under 30 mins, user can tap on under 30 mins card and it willtake user to list of recipes which can be ready in uder 30 mins. Also, if user only interested in European Cuisine, user can tap on European card which will bring list of european cuisines recipes.
 
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Dashboard-Category.gif
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/Dashboard-Category.gif
 
 ### How Recipes page works?
 
@@ -82,18 +82,25 @@ Recipe page can be reached by clicking on Recipes option from Menu or once user 
 
 For Example if you like to see list of recipes which are South Asian Cuisines. Click on 'List of Cuisines' which will collapse and represent you with list, from where click on 'South Asian Cuisine' and it will take you to list of south asian cusines recipes.
 
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/CategoryList-Recipes.gif
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/CuisineList-Recipes.gif
+
+### What is the best way to come to the top of the page?
+
+On this project there 3 pages which are long and can even get more loger as and when new content will be added which are Dashboard, Recipes and Admin. This pages can be access via scrolling up and down, but for convenience there is 'TOP' floating button on right bottom of the screen. By clicking on that floating button will bring you top of the page.
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/TopButton.gif
 
 ##### Mobile
 https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Recipe_page_iPhone.png
 
 ##### Project
-!https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/stackable_design.JPG
+!https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/stackable_design.JPG
 
-
+## Features
 
 ### Dashboard
 
-I have created index page as Dashboard for this project where all the information will be available on single display. Even with one tape it will land you on perticular recipe list which include Category wise, cooking time wise as well as cuisine wise. I have devided cuisines in 12 different region.
+I have created index page as Dashboard for this project where all the information will be available on single display. With one tape it will land you on perticular recipe list which include Category wise, cooking time wise as well as cuisine wise. I have devided cuisines in 12 different region.
 
 #### Wireframes
 ##### Desktop
@@ -106,7 +113,7 @@ https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Das
 https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Dashboard_iPhone.png
 
 ##### Project
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Dashboard-Category.gif
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/Dashboard-Category.gif
 
 ### Contact Us & Chat
 
@@ -121,8 +128,8 @@ https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Con
 Import part of this project where I have demonstrate knowledge I have gain during this module which is to carry out CRUD (Create, Read, Update, Delete) functions. Where I have started with creating login page which also allow user to create new user themselve. I have used crypting functionality for password. Once succesfully created or logged in, user will be able to carry out CRUD functions.
 
 #### Project
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/CreateNewUser.JPG
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/LoginPage.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/CreateNewUser.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/LoginPage.JPG
 
 With CRUD function, user can Add, Update and Delete Recipes, Categories and Cuisines. Too keep admin page tidy and clean I have used materializecss collapsible element. In which I have added whole 'Create New Recipes' form in collapsible element as well as Add new Category and Cuisines
 
@@ -130,6 +137,7 @@ With CRUD function, user can Add, Update and Delete Recipes, Categories and Cuis
 https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/Admin_page.png
 
 ##### Project
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/NewRecipes.JPG
-https://github.com/hidayatmansuri/simas-recipes/blob/master/static/wireframe/NewCategory%26Cuisine.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/NewRecipes.JPG
+https://github.com/hidayatmansuri/simas-recipes/blob/master/static/img/NewCategory%26Cuisine.JPG
 
+### Recipes
